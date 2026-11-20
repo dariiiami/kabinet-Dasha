@@ -1,0 +1,1742 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Кабинет Даши</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Manrope','Segoe UI',Arial,sans-serif;
+  background:#E3E7DE;
+  color:#1F3A12;
+  padding-bottom:20px;
+}
+button{font-family:inherit;cursor:pointer;border:none}
+input,select,textarea{
+  font-family:inherit;font-size:15px;color:#1F3A12;
+  border:2px solid #dfe4d8;border-radius:14px;padding:9px 12px;background:#fbfcfa;outline:none;
+  max-width:100%;
+}
+input:focus,select:focus,textarea:focus{border-color:#C98FD3}
+textarea{width:100%;resize:vertical;line-height:1.5}
+.wrap{max-width:1080px;margin:0 auto;padding:0 18px}
+.card{
+  background:#fff;border-radius:28px;padding:22px 24px;
+  box-shadow:0 10px 30px rgba(31,58,18,.08);
+  margin-top:20px;
+}
+.card h3{font-size:19px;font-weight:800;margin-bottom:12px}
+.muted{color:#7c8a72;font-size:14px}
+.btn{
+  background:#1F3A12;color:#fff;font-weight:700;font-size:14px;
+  padding:10px 18px;border-radius:16px;transition:transform .1s, opacity .2s;
+}
+.btn:hover{opacity:.88}
+.btn:active{transform:scale(.97)}
+.btn.lilac{background:#C98FD3}
+.btn.salad{background:#B6D98C;color:#1F3A12}
+.btn.ghost{background:#eef2e9;color:#1F3A12}
+.btn.mini{padding:6px 12px;font-size:13px;border-radius:12px}
+.btn.danger{background:#f3e3e3;color:#a33}
+.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.grow{flex:1}
+.pill{display:inline-block;background:#eef2e9;border-radius:999px;padding:5px 14px;font-weight:700;font-size:14px}
+.pill.lilac{background:#f3e4f6;color:#8a4b93}
+.pill.green{background:#e2f1cf;color:#1F3A12}
+.tag{display:inline-block;background:#f6f7f3;border-radius:10px;padding:3px 10px;font-size:13px;color:#5c6b52;margin:2px}
+ul.clean{list-style:none}
+li.row{margin:8px 0}
+
+header.hero{
+  background:linear-gradient(120deg,#1F3A12 0%,#4b7a2a 45%,#C98FD3 100%);
+  color:#fff;border-radius:0 0 34px 34px;padding:26px 0 22px;
+}
+header.hero h1{font-size:28px;font-weight:800;line-height:1.2}
+header.hero .sub{opacity:.85;font-size:14px;margin-top:6px}
+.points-pill{background:rgba(255,255,255,.18);border-radius:999px;padding:7px 16px;font-weight:800;font-size:15px}
+.cat-track{
+  position:relative;height:40px;margin-top:14px;
+  background:rgba(255,255,255,.16);border-radius:999px;overflow:visible;
+  display:flex;align-items:center;justify-content:space-between;padding:0 12px;
+}
+.cat-track .pawline{position:absolute;left:40px;right:44px;top:50%;height:3px;background:rgba(255,255,255,.35);border-radius:3px;transform:translateY(-50%)}
+.cat-track .cat{position:relative;font-size:26px;transition:left .5s ease;left:0}
+.cat-track .yarn{font-size:26px;position:relative;z-index:2}
+.cat-label{position:absolute;right:0;top:-24px;font-size:12px;background:rgba(31,58,18,.75);padding:3px 10px;border-radius:10px}
+
+nav#nav{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:16px}
+nav#nav button{
+  background:#fff;color:#1F3A12;font-weight:700;font-size:14px;
+  border-radius:16px;padding:9px 16px;box-shadow:0 4px 14px rgba(31,58,18,.07);
+  white-space:nowrap;
+}
+nav#nav button.active{background:#1F3A12;color:#fff}
+@media(max-width:760px){
+  nav#nav{
+    position:fixed;bottom:0;left:0;right:0;z-index:50;background:#fff;
+    box-shadow:0 -6px 20px rgba(31,58,18,.12);border-radius:22px 22px 0 0;
+    overflow-x:auto;justify-content:flex-start;flex-wrap:nowrap;margin:0;padding:10px;
+  }
+  body{padding-bottom:86px}
+}
+
+.sec-head{
+  border-radius:28px;padding:24px 26px;color:#fff;margin-top:20px;
+  background:linear-gradient(110deg,#1F3A12,#6f9e46 55%,#C98FD3);
+  box-shadow:0 10px 30px rgba(31,58,18,.14);
+  display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;
+}
+.sec-head h2{font-size:24px;font-weight:800}
+.sec-head .sec-sub{opacity:.85;font-size:13.5px;margin-top:4px}
+.prog{background:rgba(255,255,255,.2);border-radius:999px;padding:8px 18px;font-weight:800;font-size:15px}
+
+.task{display:flex;align-items:center;gap:10px;padding:9px 10px;border-radius:14px;background:#f7f9f4;margin:7px 0}
+.task input[type=checkbox]{width:20px;height:20px;accent-color:#1F3A12;flex:none}
+.task .txt{flex:1;font-size:15px}
+.task.done .txt{text-decoration:line-through;color:#9aa792}
+.iconbtn{background:transparent;font-size:15px;padding:4px 6px;border-radius:8px}
+.iconbtn:hover{background:#e8ecdf}
+.task input[type=text]{flex:1}
+
+.habits-grid{overflow-x:auto}
+.habits-grid table{border-collapse:collapse;width:100%}
+.habits-grid th,.habits-grid td{padding:2px;text-align:center;font-size:11px}
+.habits-grid td.cell{width:22px;height:26px;cursor:pointer}
+.habits-grid td.cell:hover{outline:2px solid #C98FD3}
+.habits-grid td.on{background:#B6D98C;border-radius:7px}
+.habits-grid td.hname,.habits-grid th.hname{text-align:left;font-weight:700;font-size:13.5px;padding-right:10px;white-space:nowrap}
+
+.cal{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}
+.cal .dow{text-align:center;font-weight:800;font-size:12px;color:#7c8a72}
+.cal .day{
+  background:#f7f9f4;border-radius:12px;padding:8px 0;text-align:center;font-size:14px;font-weight:600;
+  position:relative;
+}
+.cal .day.ring{box-shadow:0 0 0 3px #1F3A12;background:#fff}
+.cal .day.today{background:#f3e4f6}
+.cal .day.other{opacity:.35}
+
+.timer-big{font-size:44px;font-weight:800;font-variant-numeric:tabular-nums;letter-spacing:1px}
+.fbar{height:12px;background:#eef2e9;border-radius:999px;overflow:hidden;margin-top:6px}
+.fbar > div{height:100%;background:linear-gradient(90deg,#B6D98C,#C98FD3);border-radius:999px;transition:width .3s}
+
+.flashcard{
+  background:linear-gradient(135deg,#f6fdf0,#f9eefb);
+  border:2px solid #dfe4d8;border-radius:28px;min-height:150px;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;
+  cursor:pointer;text-align:center;padding:20px;
+}
+.flashcard .w{font-size:28px;font-weight:800}
+.flashcard .t{font-size:19px;color:#5c6b52}
+
+.chip{display:inline-block;background:#eef2e9;border-radius:14px;padding:8px 14px;margin:4px;font-weight:700;cursor:pointer;font-size:14px}
+.chip:hover{background:#B6D98C}
+.chip.sel{background:#C98FD3;color:#fff}
+.nw{background:#f3e4f6;border-radius:6px;padding:0 3px;cursor:pointer;font-weight:700;color:#8a4b93}
+.gap{width:80px;padding:4px 8px;text-align:center;border-radius:10px;border:2px solid #C98FD3;background:#fff;font-weight:700}
+.score-ok{color:#2e7d32;font-weight:800}
+.score-bad{color:#c0504d;font-weight:800}
+mark.stg{background:#fdf3b8}
+
+.shop-item{display:flex;align-items:center;gap:12px;background:#f7f9f4;border-radius:16px;padding:12px 14px;margin:8px 0}
+.shop-item .price{font-weight:800;color:#8a4b93;white-space:nowrap}
+
+details{background:#f7f9f4;border-radius:16px;padding:12px 16px;margin:8px 0}
+details summary{font-weight:700;cursor:pointer}
+
+#toast{
+  position:fixed;bottom:100px;left:50%;transform:translateX(-50%);
+  background:#1F3A12;color:#fff;font-weight:700;padding:12px 22px;border-radius:999px;
+  opacity:0;pointer-events:none;transition:opacity .3s;z-index:100;max-width:88vw;text-align:center;
+}
+#toast.show{opacity:1}
+#confetti{position:fixed;inset:0;pointer-events:none;z-index:99}
+
+.reader{max-height:420px;overflow-y:auto;border:2px solid #e7ece1;border-radius:20px;padding:16px;background:#fff}
+.reader p{margin-bottom:12px;line-height:1.7;cursor:pointer;font-size:15.5px}
+.reader p.marked{background:#fdf3b8;border-radius:8px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:0 20px}
+@media(max-width:700px){.grid2{grid-template-columns:1fr}}
+.small{font-size:13px}
+.center{text-align:center}
+.mt{margin-top:12px}
+#mathQ{font-size:26px;font-weight:800;margin:8px 0}
+#mathQ2{font-size:26px;font-weight:800;margin:8px 0}
+.footer-note{text-align:center;color:#7c8a72;font-size:12.5px;margin:26px 0 10px}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="row" style="justify-content:space-between">
+      <div class="grow">
+        <h1 id="greeting">Привет, Даша!</h1>
+        <div class="sub" id="dateLine"></div>
+      </div>
+      <div class="points-pill">🪙 <span id="pointsNum">0</span> баллов</div>
+    </div>
+    <div class="cat-track">
+      <div class="pawline"></div>
+      <span class="cat" id="catEmoji" style="left:0%">🐈</span>
+      <span class="yarn">🧶</span>
+      <span class="cat-label" id="catLabel">выполняй задачи — котик дойдёт до клубка</span>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+  <nav id="nav"></nav>
+
+  <main id="main">
+
+  <section id="sec-home">
+    <div class="sec-head">
+      <div><h2>Главная</h2><div class="sec-sub">старт дня, план, фокус, итог</div></div>
+      <span class="prog" id="homeProg"></span>
+    </div>
+
+    <div class="card">
+      <h3>🌅 Старт дня</h3>
+      <div class="row" style="margin-bottom:10px">
+        <span class="muted">Энергия:</span><span id="energyBtns"></span>
+        <span class="muted" style="margin-left:14px">Настроение:</span><span id="moodBtns"></span>
+      </div>
+      <div class="row">
+        <span class="muted">Главное дело дня:</span>
+        <input type="text" id="mainTask" class="grow" placeholder="Например: подготовить конспект к семинару">
+        <button class="btn mini" onclick="saveMainTask()">Сохранить</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>⏰ План на сегодня</h3>
+      <div class="grid2">
+        <div><h3 class="small">Утро</h3><div id="planM"></div><div class="row"><input type="text" id="inM" class="grow" placeholder="Добавить в утро"><button class="btn mini salad" onclick="addPlan('m')">+</button></div></div>
+        <div><h3 class="small">День</h3><div id="planD"></div><div class="row"><input type="text" id="inD" class="grow" placeholder="Добавить в день"><button class="btn mini salad" onclick="addPlan('d')">+</button></div></div>
+        <div><h3 class="small">Вечер</h3><div id="planE"></div><div class="row"><input type="text" id="inE" class="grow" placeholder="Добавить в вечер"><button class="btn mini salad" onclick="addPlan('e')">+</button></div></div>
+        <div>
+          <h3 class="small">Из целей сезона — на сегодня</h3>
+          <div id="goalTasksToday"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>🎯 Таймер фокуса</h3>
+      <div class="row" style="margin-bottom:8px">
+        <select id="focusSection">
+          <option>Английский</option><option>Немецкий</option><option>Питон</option>
+          <option>Коучинг</option><option>Учёба (юрфак)</option><option>Спорт</option><option>Другое</option>
+        </select>
+        <select id="focusLen"><option value="25">25 минут</option><option value="50">50 минут</option><option value="10">10 минут</option><option value="5">5 минут</option></select>
+        <button class="btn" id="timerBtn" onclick="timerToggle()">Старт</button>
+        <button class="btn ghost mini" onclick="timerReset()">Сброс</button>
+      </div>
+      <div class="timer-big" id="timerShow">25:00</div>
+      <div class="fbar"><div id="timerBar" style="width:0%"></div></div>
+      <div class="muted mt">⏱ Время в фокусе за неделю:</div>
+      <div id="focusWeek"></div>
+    </div>
+
+    <div class="card">
+      <h3>📖 Слово дня</h3>
+      <div id="wordOfDay"></div>
+    </div>
+
+    <div class="card">
+      <h3>🧮 Математическая разминка</h3>
+      <div id="mathQ"></div>
+      <div class="row">
+        <input type="text" id="mathA" placeholder="Ответ" style="width:110px">
+        <button class="btn mini" onclick="checkMath(1)">Проверить</button>
+        <button class="btn ghost mini" onclick="newMath(1)">Другой пример</button>
+        <span id="mathRes"></span>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>🌙 Итог дня</h3>
+      <div class="row" style="margin-bottom:10px">
+        <span class="muted">Одно слово про день:</span>
+        <input type="text" id="dayWord" placeholder="спокойный" style="width:180px">
+      </div>
+      <div class="muted">Три строки «что получилось»:</div>
+      <input type="text" id="good1" placeholder="1." class="mt" style="width:100%">
+      <input type="text" id="good2" placeholder="2." class="mt" style="width:100%">
+      <input type="text" id="good3" placeholder="3." class="mt" style="width:100%">
+      <div class="muted mt">Что перенести на завтра (необязательно):</div>
+      <input type="text" id="carryNote" placeholder="например: дочитать главу" class="mt" style="width:100%">
+      <div class="row mt">
+        <button class="btn lilac" onclick="closeDay()">✨ Закрыть день (+5 баллов)</button>
+        <span id="dayClosed" class="pill green" style="display:none">День закрыт 🎉</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>📅 Календарь месяца <span class="muted small">(кольцом отмечены закрытые дни)</span></h3>
+      <div class="row" style="margin-bottom:10px">
+        <button class="btn ghost mini" onclick="calMove(-1)">←</button>
+        <b id="calTitle"></b>
+        <button class="btn ghost mini" onclick="calMove(1)">→</button>
+      </div>
+      <div class="cal" id="calGrid"></div>
+    </div>
+  </section>
+
+  <section id="sec-week" style="display:none">
+    <div class="sec-head">
+      <div><h2>Неделя</h2><div class="sec-sub" id="weekRange"></div></div>
+      <span class="prog" id="weekProg"></span>
+    </div>
+    <div class="card">
+      <h3>🏁 Цели недели</h3>
+      <div id="weekGoals"></div>
+      <div class="row"><input type="text" id="inWGoal" class="grow" placeholder="Новая цель недели"><button class="btn mini" onclick="addWeekGoal()">+</button></div>
+    </div>
+    <div class="card">
+      <h3>🗓 Задачи по дням</h3>
+      <div class="row" style="margin-bottom:8px">
+        <button class="btn mini ghost" onclick="carryUnfinished()">↪ Перенести невыполненное на сегодня</button>
+      </div>
+      <div class="grid2" id="weekDays"></div>
+    </div>
+    <div class="card">
+      <h3>🍂 Список «Потом»</h3>
+      <div id="laterList"></div>
+      <div class="row"><input type="text" id="inLater" class="grow" placeholder="Идея, которую сделаю потом"><button class="btn mini lilac" onclick="addLater()">+</button></div>
+    </div>
+  </section>
+
+  <section id="sec-goals" style="display:none">
+    <div class="sec-head">
+      <div><h2>Доска целей на сезон</h2><div class="sec-sub">не больше 3 целей — фокус важнее</div></div>
+      <span class="prog" id="goalProg"></span>
+    </div>
+    <div class="card">
+      <div id="seasonGoals"></div>
+      <div class="row mt" id="seasonAdd"></div>
+    </div>
+  </section>
+
+  <section id="sec-habits" style="display:none">
+    <div class="sec-head">
+      <div><h2>Привычки</h2><div class="sec-sub">трекер на месяц клеточками</div></div>
+      <span class="prog" id="habProg"></span>
+    </div>
+    <div class="card">
+      <div class="row" style="margin-bottom:10px">
+        <button class="btn ghost mini" onclick="habMove(-1)">← прошлый месяц</button>
+        <b id="habMonthTitle"></b>
+        <button class="btn ghost mini" onclick="habMove(1)">следующий →</button>
+      </div>
+      <div class="habits-grid" id="habGrid"></div>
+      <div class="row mt">
+        <input type="text" id="inHabit" class="grow" placeholder="Новая привычка (например: вода 2 л)">
+        <button class="btn mini" onclick="addHabit()">+</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="sec-lang" style="display:none">
+    <div class="sec-head">
+      <div><h2>Языки: английский и немецкий</h2><div class="sec-sub">задания из твоего текста, словарь, карточки</div></div>
+      <span class="prog" id="langProg"></span>
+    </div>
+
+    <div class="card">
+      <h3>✍️ Задания из любого текста</h3>
+      <div class="muted small">Вставь текст (например, статью на английском). Новые слова подсветятся лиловым — нажми на слово, чтобы добавить его в словарь.</div>
+      <textarea id="langText" rows="5" class="mt" placeholder="Paste any text here..."></textarea>
+      <div class="row mt">
+        <button class="btn" onclick="makeGapsExercise()">🧩 Вставь пропущенные слова</button>
+        <button class="btn salad" onclick="makeAssembleExercise()">🗂 Собери текст</button>
+      </div>
+      <div id="langEx" class="mt"></div>
+    </div>
+
+    <div class="card">
+      <h3>📚 Мой словарь</h3>
+      <div class="row" style="margin-bottom:10px">
+        <input type="text" id="dicWord" placeholder="Слово" style="width:150px">
+        <input type="text" id="dicTr" placeholder="Перевод" style="width:170px">
+        <input type="text" id="dicEmoji" placeholder="Эмодзи" style="width:80px">
+        <select id="dicLang"><option value="en">🇬🇧</option><option value="de">🇩🇪</option></select>
+        <button class="btn mini" onclick="addDict()">+</button>
+      </div>
+      <div id="dictList"></div>
+    </div>
+
+    <div class="card">
+      <h3>🃏 Карточки на повторение</h3>
+      <div id="flashArea"></div>
+    </div>
+  </section>
+
+  <section id="sec-coach" style="display:none">
+    <div class="sec-head">
+      <div><h2>Коучинг</h2><div class="sec-sub">книги, закладки, конспект</div></div>
+      <span class="prog" id="coachProg"></span>
+    </div>
+    <div class="card">
+      <h3>📖 Мои книги</h3>
+      <div class="row" style="margin-bottom:10px">
+        <input type="text" id="bookTitle" class="grow" placeholder="Название книги">
+        <input type="file" id="bookFile" accept=".txt,text/plain" onchange="bookFilePicked(event)">
+        <button class="btn mini ghost" onclick="addBookEmpty()">Добавить книгу (текст вставишь сама)</button>
+      </div>
+      <div id="booksList"></div>
+    </div>
+    <div class="card" id="readerCard" style="display:none">
+      <h3 id="readerTitle"></h3>
+      <div class="row" style="margin-bottom:10px">
+        <button class="btn mini ghost" onclick="closeReader()">← К списку книг</button>
+        <button class="btn mini" onclick="addBookmark()">🔖 Закладка на этом месте</button>
+        <button class="btn mini lilac" onclick="addHighlight()">✏️ Сохранить выделенное</button>
+        <button class="btn mini ghost" onclick="replaceBookText()">Вставить текст заново</button>
+      </div>
+      <div class="muted small" style="margin-bottom:8px">Выдели мышкой фрагмент и нажми «Сохранить выделенное». Нажми на абзац, чтобы поставить закладку на него.</div>
+      <div class="reader" id="readerBody"></div>
+      <div class="grid2 mt">
+        <div><h3 class="small">🔖 Закладки</h3><div id="bookmarksList"></div></div>
+        <div><h3 class="small">✏️ Важное (выделения и заметки)</h3><div id="highlightsList"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="sec-python" style="display:none">
+    <div class="sec-head">
+      <div><h2>Программирование: Python</h2><div class="sec-sub">краткая теория + практика</div></div>
+      <span class="prog" id="pyProg"></span>
+    </div>
+    <div class="card">
+      <h3>📗 Краткая теория</h3>
+      <div id="pyTheory"></div>
+    </div>
+    <div class="card">
+      <h3>🏋️ Практика</h3>
+      <div id="pyTasks"></div>
+    </div>
+  </section>
+
+  <section id="sec-dev" style="display:none">
+    <div class="sec-head">
+      <div><h2>Развитие</h2><div class="sec-sub">речь, шахматы, эссе, вопрос дня, финансы</div></div>
+      <span class="prog" id="devProg"></span>
+    </div>
+
+    <div class="card">
+      <h3>🎤 Развитие речи</h3>
+      <div id="speechTask"></div>
+    </div>
+
+    <div class="card">
+      <h3>♟ Шахматные задачки</h3>
+      <div id="chessArea"></div>
+    </div>
+
+    <div class="card">
+      <h3>🧮 Ещё математическая разминка</h3>
+      <div id="mathQ2"></div>
+      <div class="row">
+        <input type="text" id="mathA2" placeholder="Ответ" style="width:110px">
+        <button class="btn mini" onclick="checkMath(2)">Проверить</button>
+        <button class="btn ghost mini" onclick="newMath(2)">Другой пример</button>
+        <span id="mathRes2"></span>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>📚 Книги, которые хочу прочитать</h3>
+      <div id="toReadList"></div>
+      <div class="row"><input type="text" id="inToRead" class="grow" placeholder="Название книги"><button class="btn mini" onclick="addToRead()">+</button></div>
+    </div>
+
+    <div class="card">
+      <h3>💭 Вопрос дня</h3>
+      <div id="qOfDay"></div>
+      <textarea id="qAnswer" rows="3" class="mt" placeholder="Мои размышления..."></textarea>
+      <div class="row mt"><button class="btn mini" onclick="saveQAnswer()">Сохранить</button></div>
+    </div>
+
+    <div class="card">
+      <h3>📝 Эссе</h3>
+      <div class="row" style="margin-bottom:10px">
+        <input type="text" id="essayTopic" class="grow" placeholder="Тема эссе">
+        <button class="btn mini" onclick="newEssay()">Создать</button>
+      </div>
+      <div id="essayList"></div>
+    </div>
+
+    <div class="card">
+      <h3>💰 Статьи про финансы и инвестирование</h3>
+      <div class="muted small" style="margin-bottom:8px">Ты только начинаешь разбираться в инвестициях — читай по одной в спокойный день.</div>
+      <div id="finArticles"></div>
+    </div>
+  </section>
+
+  <section id="sec-health" style="display:none">
+    <div class="sec-head">
+      <div><h2>Здоровье</h2><div class="sec-sub">тренировки, питание, вода, цикл</div></div>
+      <span class="prog" id="healthProg"></span>
+    </div>
+
+    <div class="card">
+      <h3>💪 Тренировки на неделю</h3>
+      <div class="grid2" id="workoutList"></div>
+      <div class="row mt">
+        <input type="text" id="inWorkout" class="grow" placeholder="Новая тренировка">
+        <select id="workoutDay"></select>
+        <button class="btn mini" onclick="addWorkout()">+</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>💧 Вода</h3>
+      <div class="row">
+        <button class="btn ghost mini" onclick="water(-1)">−</button>
+        <span style="font-size:26px;font-weight:800" id="waterNum"></span>
+        <button class="btn mini" onclick="water(1)">+</button>
+        <span class="muted">стакан(ов), цель — 8</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>🥗 Питание на сегодня</h3>
+      <textarea id="nutritionText" rows="3" placeholder="Что ела / план на день..."></textarea>
+      <div class="row mt"><button class="btn mini" onclick="saveNutrition()">Сохранить</button></div>
+    </div>
+
+    <div class="card">
+      <h3>🌸 Цикл</h3>
+      <div id="cycleInfo"></div>
+      <div class="row mt">
+        <input type="date" id="cycleDate">
+        <button class="btn mini" onclick="addCycleStart()">Отметить начало цикла</button>
+      </div>
+      <div class="muted small mt">Симптомы сегодня (нажимай, чтобы отметить):</div>
+      <div id="symptomsArea" class="mt"></div>
+    </div>
+  </section>
+
+  <section id="sec-game" style="display:none">
+    <div class="sec-head">
+      <div><h2>Игра и награды</h2><div class="sec-sub">баллы за задачи, магазин, вишлист</div></div>
+      <span class="prog" id="gameProg"></span>
+    </div>
+    <div class="card">
+      <h3>🐱 Как это работает</h3>
+      <div class="muted">За каждую выполненную задачу — <b>+1 балл</b>, за закрытый день — <b>+5</b>. Котик наверху идёт к клубку по мере выполнения задач за сегодня. Награды придумывай сама!</div>
+    </div>
+    <div class="card">
+      <h3>🛍 Магазин наград</h3>
+      <div class="row" style="margin-bottom:10px">
+        <input type="text" id="rewardName" class="grow" placeholder="Награда (например: вечер с ромкомом)">
+        <input type="number" id="rewardPrice" placeholder="Цена" style="width:90px" min="1">
+        <button class="btn mini" onclick="addReward()">+</button>
+      </div>
+      <div id="rewardsList"></div>
+    </div>
+    <div class="card">
+      <h3>🐖 Вишлист с копилкой</h3>
+      <div class="row" style="margin-bottom:10px">
+        <input type="text" id="wishName" class="grow" placeholder="Мечта (например: наушники)">
+        <input type="number" id="wishPrice" placeholder="Цена ₽" style="width:110px" min="1">
+        <button class="btn mini lilac" onclick="addWish()">+</button>
+      </div>
+      <div id="wishList"></div>
+    </div>
+  </section>
+
+  <section id="sec-data" style="display:none">
+    <div class="sec-head">
+      <div><h2>Данные</h2><div class="sec-sub">всё хранится в этом браузере</div></div>
+    </div>
+    <div class="card">
+      <h3>💾 Сохранить и восстановить</h3>
+      <div class="muted" style="margin-bottom:10px">Экспорт скачивает файл со всеми твоими записями. Импорт загружает его обратно — так можно перенести кабинет на другой компьютер.</div>
+      <div class="row">
+        <button class="btn" onclick="exportData()">⬇ Экспорт в файл</button>
+        <label class="btn lilac" style="display:inline-block">⬆ Импорт из файла<input type="file" id="importFile" accept=".json" style="display:none" onchange="importData(event)"></label>
+        <button class="btn danger mini" onclick="resetAll()">Сбросить всё к примерам</button>
+      </div>
+    </div>
+    <div class="card">
+      <h3>❓ Как хранятся данные</h3>
+      <div class="muted">Кабинет сохраняет всё в память браузера (localStorage) на этом устройстве. Без интернета, регистрации и сервера. Если очистить данные сайта — записи удалятся, поэтому перед чисткой браузера делай экспорт.</div>
+    </div>
+  </section>
+
+  </main>
+  <div class="footer-note">Личный кабинет Даши · всё живёт в твоём браузере 💚</div>
+</div>
+
+<div id="toast"></div>
+<canvas id="confetti"></canvas>
+
+<script>
+/* ================= помощники и состояние ================= */
+var STORE_KEY='dashaCabinet_v1';
+function uid(){return 'id'+Math.random().toString(36).slice(2,9)+Date.now().toString(36).slice(-3);}
+function pad2(n){return String(n).padStart(2,'0');}
+function todayStr(d){d=d||new Date();return d.getFullYear()+'-'+pad2(d.getMonth()+1)+'-'+pad2(d.getDate());}
+function parseISO(s){var p=s.split('-');return new Date(+p[0],+p[1]-1,+p[2]);}
+function addDaysISO(iso,n){var d=parseISO(iso);d.setDate(d.getDate()+n);return todayStr(d);}
+function mondayOf(iso){var d=parseISO(iso);var wd=(d.getDay()+6)%7;d.setDate(d.getDate()-wd);return todayStr(d);}
+var MONTHS_RU=['января','февраля','марта','апреля','мая','июня','июля','августа','сентября','октября','ноября','декабря'];
+var MONTHS_NOM=['Январь','Февраль','Март','Апрель','Май','Июнь','Июль','Август','Сентябрь','Октябрь','Ноябрь','Декабрь'];
+var WD_RU=['воскресенье','понедельник','вторник','среда','четверг','пятница','суббота'];
+var WD_SHORT=['Пн','Вт','Ср','Чт','Пт','Сб','Вс'];
+function fmtRu(iso){var d=parseISO(iso);return d.getDate()+' '+MONTHS_RU[d.getMonth()]+', '+WD_RU[d.getDay()];}
+function esc(s){return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+function save(){localStorage.setItem(STORE_KEY,JSON.stringify(DB));}
+function toast(msg){var t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');clearTimeout(t._h);t._h=setTimeout(function(){t.classList.remove('show');},2200);}
+function addPoints(n){DB.points+=n;document.getElementById('pointsNum').textContent=DB.points;save();updateCat();}
+function dayObj(iso){
+  if(!DB.days[iso])DB.days[iso]={energy:0,mood:0,main:'',plan:{m:[],d:[],e:[]},dayWord:'',good1:'',good2:'',good3:'',carryNote:'',closed:false};
+  return DB.days[iso];
+}
+function mkTask(text,date,done){return{id:uid(),text:text,date:date||'',done:!!done};}
+
+/* ================= примеры при первом открытии ================= */
+function seedData(){
+  var t=todayStr();
+  var db={
+    v:1,points:14,
+    goals:{
+      season:[
+        {id:uid(),title:'Сдать экзамен по английскому',tasks:[mkTask('Учить 30 новых слов',t,false),mkTask('Прорешать пробный вариант',addDaysISO(t,2),false)]},
+        {id:uid(),title:'Дочитать книгу по коучингу и сделать конспект',tasks:[mkTask('Глава 2 + план агентства',t,false),mkTask('Выписать 10 идей для будущего агентства','',false)]},
+        {id:uid(),title:'Разобраться в инвестициях',tasks:[mkTask('Прочитать статью про подушку безопасности',t,false),mkTask('Вести таблицу расходов неделю','',false)]}
+      ],
+      later:[
+        {id:uid(),text:'Пройти вебинар по нутрициологии'},
+        {id:uid(),text:'Поиграть в онлайн-шахматный турнир'},
+        {id:uid(),text:'Посмотреть документалку про моду'},
+        {id:uid(),text:'Связать шарф'}
+      ]
+    },
+    days:{},focus:{},
+    dict:[
+      {id:uid(),lang:'en',word:'resilience',tr:'устойчивость, стойкость',emoji:'🌱',box:1},
+      {id:uid(),lang:'en',word:'brief',tr:'краткий; брифинг',emoji:'📄',box:1},
+      {id:uid(),lang:'en',word:'on purpose',tr:'специально, нарочно',emoji:'🎯',box:2},
+      {id:uid(),lang:'en',word:'carry out',tr:'выполнять',emoji:'🤹',box:1},
+      {id:uid(),lang:'en',word:'deadline',tr:'крайний срок',emoji:'⏳',box:2},
+      {id:uid(),lang:'de',word:'der Alltag',tr:'повседневность, быт',emoji:'🧦',box:1},
+      {id:uid(),lang:'de',word:'die Selbständigkeit',tr:'самостоятельность',emoji:'🐝',box:1},
+      {id:uid(),lang:'de',word:'das Ziel',tr:'цель',emoji:'🏁',box:2}
+    ],
+    habits:[],habitLog:{},weeks:{},
+    books:[{id:uid(),title:'Коучинг для себя (фрагмент-пример)',content:'Коучинг — это разговор, который помогает человеку самому найти ответ.\n\nМодель GROW:\nG (Goal) — цель: чего ты хочешь?\nR (Reality) — реальность: что происходит сейчас?\nO (Options) — варианты: что можно сделать?\nW (Will) — воля: что сделаешь первым шагом?\n\nХороший вопрос коуча не даёт совета, а открывает выбор. Пример: «Что бы ты сделала, если бы не было ограничений?»\n\nПрактика: возьми свою цель на сезон и прогони её через GROW.',highlights:[],bookmarks:[]}],
+    python:{solutions:{},done:{}},
+    essays:[{id:uid(),topic:'Как коучинг поможет мне создать кадровое агентство',text:'Первый набросок: агентство начинается с умения слышать людей и задавать точные вопросы...'}],
+    toRead:[
+      {id:uid(),title:'Джеймс Клир — «Атомные привычки»',done:true},
+      {id:uid(),title:'Книга по нутрициологии для начинающих',done:false},
+      {id:uid(),title:'Документалка или книга про историю моды',done:false}
+    ],
+    qOfDay:{date:'',answer:''},
+    health:{
+      workouts:[
+        {id:uid(),day:0,text:'Йога / растяжка 20 мин',done:true},
+        {id:uid(),day:1,text:'Прогулка 40 мин',done:true},
+        {id:uid(),day:2,text:'Силовая 30 мин',done:false},
+        {id:uid(),day:3,text:'Отдых, медитация',done:false},
+        {id:uid(),day:4,text:'Бег или быстрая ходьба 25 мин',done:false},
+        {id:uid(),day:5,text:'Растяжка 15 мин',done:false},
+        {id:uid(),day:6,text:'Спокойная прогулка',done:false}
+      ],
+      water:{},nutrition:{},
+      cycle:{starts:[addDaysISO(t,-9),addDaysISO(t,-38)],symptoms:{}}
+    },
+    rewards:[
+      {id:uid(),name:'Вечер с раскраской и старым ромкомом',price:20},
+      {id:uid(),name:'Кофе навынос в любимой кофейне',price:25},
+      {id:uid(),name:'Новые маркеры для конспектов',price:40},
+      {id:uid(),name:'Утро без будильника',price:60}
+    ],
+    wishlist:[
+      {id:uid(),name:'Наушники',price:5000,saved:1200},
+      {id:uid(),name:'Фотосессия в Нижнем Новгороде',price:4000,saved:500}
+    ]
+  };
+  var d0=dayObjOn(db,t);
+  d0.energy=4;d0.mood=5;d0.main='Подготовить конспект к семинару по гражданскому праву';
+  d0.plan={
+    m:[{id:uid(),text:'Йога/растяжка 15 мин',done:true},{id:uid(),text:'Английский — 1 час',done:false}],
+    d:[{id:uid(),text:'Пара по гражданскому праву',done:true},{id:uid(),text:'Конспект по питону: цикл for',done:false}],
+    e:[{id:uid(),text:'Немецкий — 20 минут',done:false},{id:uid(),text:'Раскраска-антистресс перед сном',done:false}]
+  };
+  db.days[t]=d0;
+  db.focus[addDaysISO(t,-1)]={'Английский':60};
+  db.focus[addDaysISO(t,-2)]={'Питон':40,'Английский':60};
+  db.focus[addDaysISO(t,-3)]={'Учёба (юрфак)':90};
+  db.focus[addDaysISO(t,-4)]={'Спорт':30,'Английский':60};
+  db.focus[t]={'Спорт':20};
+  ['Английский 1 час','Немецкий 20 мин','Спорт / прогулка','Сон до 00:00','Час до сна без гаджетов','Медитация','Вода 2 л'].forEach(function(h){db.habits.push({id:uid(),name:h});});
+  var monthKey=t.slice(0,7),log={};
+  db.habits.forEach(function(h,i){log[h.id]=[1+i%3,4,5,8,9+i%2];});
+  db.habitLog[monthKey]=log;
+  return db;
+}
+function dayObjOn(db,iso){
+  if(!db.days[iso])db.days[iso]={energy:0,mood:0,main:'',plan:{m:[],d:[],e:[]},dayWord:'',good1:'',good2:'',good3:'',carryNote:'',closed:false};
+  return db.days[iso];
+}
+
+var DB=null;
+try{DB=JSON.parse(localStorage.getItem(STORE_KEY));}catch(e){DB=null;}
+if(!DB||!DB.goals){DB=seedData();save();}
+
+/* ================= меню и шапка ================= */
+var SECTIONS=[
+  ['sec-home','Главная','🏠'],['sec-week','Неделя','🗓'],['sec-goals','Цели сезона','🎯'],
+  ['sec-habits','Привычки','✅'],['sec-lang','Языки','🗣'],['sec-coach','Коучинг','📖'],
+  ['sec-python','Питон','🐍'],['sec-dev','Развитие','💡'],['sec-health','Здоровье','🌸'],
+  ['sec-game','Игра','🐱'],['sec-data','Данные','💾']
+];
+var CURRENT='sec-home';
+function buildNav(){
+  var nav=document.getElementById('nav');nav.innerHTML='';
+  SECTIONS.forEach(function(s){
+    var b=document.createElement('button');b.textContent=s[2]+' '+s[1];b.dataset.target=s[0];
+    b.onclick=function(){showSection(s[0]);};nav.appendChild(b);
+  });
+}
+function showSection(id){
+  CURRENT=id;
+  SECTIONS.forEach(function(s){document.getElementById(s[0]).style.display=(s[0]===id)?'':'none';});
+  var btns=document.querySelectorAll('#nav button');
+  btns.forEach(function(b){b.classList.toggle('active',b.dataset.target===id);});
+  renderAll();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function renderAll(){
+  renderHeader();renderHome();renderWeek();renderGoals();renderHabits();
+  renderDict();renderFlash();renderCoach();renderPython();renderDev();renderHealth();renderGame();
+}
+function renderHeader(){
+  var h=new Date().getHours(),g;
+  if(h>=5&&h<12)g='Доброе утро, Даша! ☀️';
+  else if(h>=12&&h<17)g='Добрый день, Даша! 🌤';
+  else if(h>=17&&h<23)g='Добрый вечер, Даша! 🌆';
+  else g='Доброй ночи, Даша! 🌙';
+  document.getElementById('greeting').textContent=g;
+  document.getElementById('dateLine').textContent=fmtRu(todayStr());
+  document.getElementById('pointsNum').textContent=DB.points;
+  updateCat();
+}
+function todayDoneTotal(){
+  var t=todayStr(),d=dayObj(t),done=0,total=0;
+  ['m','d','e'].forEach(function(p){d.plan[p].forEach(function(x){total++;if(x.done)done++;});});
+  DB.goals.season.forEach(function(g){g.tasks.forEach(function(x){if(x.date===t){total++;if(x.done)done++;}});});
+  return{done:done,total:total};
+}
+function updateCat(){
+  var s=todayDoneTotal(),pct=s.total?Math.round(s.done/s.total*100):0;
+  document.getElementById('catEmoji').style.left=(10+(pct*0.68))+'%';
+  document.getElementById('catLabel').textContent=s.done+' из '+s.total+' задач сегодня · '+DB.points+' баллов';
+}
+
+/* ================= ГЛАВНАЯ ================= */
+function renderHome(){
+  var d=dayObj(todayStr());
+  var scale=function(v,el,fn){
+    var html='';
+    for(var i=1;i<=5;i++)html+='<button class="chip'+(v===i?' sel':'')+'" onclick="'+fn+'('+i+')">'+i+'</button>';
+    document.getElementById(el).innerHTML=html;
+  };
+  scale(d.energy,'energyBtns','setEnergy');
+  scale(d.mood,'moodBtns','setMood');
+  if(document.activeElement!==document.getElementById('mainTask'))document.getElementById('mainTask').value=d.main;
+  ['m','d','e'].forEach(renderPlanPart);
+  renderGoalTasksToday();
+  document.getElementById('homeProg').textContent='задач сегодня: '+todayDoneTotal().done+'/'+todayDoneTotal().total;
+  renderFocusWeek();
+  document.getElementById('wordOfDay').innerHTML=renderWordOfDay();
+  var inputs={'dayWord':d.dayWord,'good1':d.good1,'good2':d.good2,'good3':d.good3,'carryNote':d.carryNote};
+  for(var id in inputs){
+    var el=document.getElementById(id);
+    if(document.activeElement!==el)el.value=inputs[id]||'';
+  }
+  document.getElementById('dayClosed').style.display=d.closed?'':'none';
+  renderCalendar();
+  updateCat();
+}
+function setEnergy(v){dayObj(todayStr()).energy=v;save();renderHome();}
+function setMood(v){dayObj(todayStr()).mood=v;save();renderHome();}
+function saveMainTask(){dayObj(todayStr()).main=document.getElementById('mainTask').value;save();toast('Главное дело сохранено 💪');}
+function renderPlanPart(p){
+  var d=dayObj(todayStr()),el=document.getElementById('plan'+p.toUpperCase());
+  var html='';
+  d.plan[p].forEach(function(x){
+    html+='<div class="task'+(x.done?' done':'')+'"><input type="checkbox"'+(x.done?' checked':'')+' onchange="togglePlan(\''+p+'\',\''+x.id+'\')">'+
+      '<span class="txt" onclick="editPlan(\''+p+'\',\''+x.id+'\')">'+esc(x.text)+'</span>'+
+      '<button class="iconbtn" title="Перенести на завтра" onclick="deferPlan(\''+p+'\',\''+x.id+'\')">↪</button>'+
+      '<button class="iconbtn" onclick="delPlan(\''+p+'\',\''+x.id+'\')">✕</button></div>';
+  });
+  el.innerHTML=html||'<div class="muted small">Пока пусто</div>';
+}
+function findPlan(p,id){var d=dayObj(todayStr());return d.plan[p].find(function(x){return x.id===id;});}
+function togglePlan(p,id){
+  var x=findPlan(p,id);if(!x)return;
+  x.done=!x.done;
+  if(x.done)addPoints(1);else if(DB.points>0)DB.points--;
+  save();renderHome();renderGame();
+}
+function addPlan(p){
+  var inp=document.getElementById('in'+p.toUpperCase()),v=inp.value.trim();
+  if(!v)return;dayObj(todayStr()).plan[p].push({id:uid(),text:v,done:false});inp.value='';save();renderHome();
+}
+function editPlan(p,id){var x=findPlan(p,id);if(!x)return;var v=prompt('Изменить задачу:',x.text);if(v===null)return;x.text=v.trim()||x.text;save();renderHome();}
+function delPlan(p,id){var d=dayObj(todayStr());d.plan[p]=d.plan[p].filter(function(x){return x.id!==id;});save();renderHome();}
+function deferPlan(p,id){
+  var d=dayObj(todayStr()),x=findPlan(p,id);if(!x)return;
+  d.plan[p]=d.plan[p].filter(function(t2){return t2.id!==id;});
+  var tm=dayObj(addDaysISO(todayStr(),1));x.done=false;tm.plan[p].push(x);
+  save();renderHome();toast('Перенесено на завтра ↪');
+}
+function renderGoalTasksToday(){
+  var t=todayStr(),el=document.getElementById('goalTasksToday'),html='';
+  DB.goals.season.forEach(function(g){
+    var task=g.tasks.find(function(x){return x.date===t&&!x.done;})||g.tasks.find(function(x){return x.date===t&&x.done;})||g.tasks.find(function(x){return!x.date&&!x.done;});
+    if(task)html+='<div class="task'+(task.done?' done':'')+'"><input type="checkbox"'+(task.done?' checked':'')+' onchange="toggleGoalTask(\''+g.id+'\',\''+task.id+'\')"><span class="txt">'+esc(task.text)+' <span class="tag">'+esc(g.title)+'</span></span></div>';
+  });
+  el.innerHTML=html||'<div class="muted small">Задач на сегодня из целей нет — добавь их в разделе «Цели сезона» 🎯</div>';
+}
+function toggleGoalTask(gid,tid){
+  var g=DB.goals.season.find(function(x){return x.id===gid;});if(!g)return;
+  var task=g.tasks.find(function(x){return x.id===tid;});if(!task)return;
+  task.done=!task.done;
+  if(task.done)addPoints(1);else if(DB.points>0)DB.points--;
+  save();renderAll();
+}
+
+/* ================= таймер фокуса ================= */
+var TIMER={left:25*60,total:25*60,run:false,iv:null};
+function timerToggle(){
+  if(TIMER.run){clearInterval(TIMER.iv);TIMER.run=false;document.getElementById('timerBtn').textContent='Продолжить';return;}
+  TIMER.run=true;document.getElementById('timerBtn').textContent='Пауза';
+  TIMER.iv=setInterval(function(){
+    TIMER.left--;
+    if(TIMER.left<=0){TIMER.left=0;drawTimer();stopTimer();focusFinished();return;}
+    drawTimer();
+  },1000);
+}
+function stopTimer(){clearInterval(TIMER.iv);TIMER.run=false;document.getElementById('timerBtn').textContent='Старт';}
+function drawTimer(){
+  var m=Math.floor(TIMER.left/60),s=TIMER.left%60;
+  document.getElementById('timerShow').textContent=pad2(m)+':'+pad2(s);
+  document.getElementById('timerBar').style.width=(100-TIMER.left/TIMER.total*100)+'%';
+}
+function timerReset(){
+  stopTimer();
+  var len=+(document.getElementById('focusLen').value||25);
+  TIMER.left=len*60;TIMER.total=len*60;drawTimer();
+  document.getElementById('timerBtn').textContent='Старт';
+}
+function focusFinished(){
+  var sec=document.getElementById('focusSection').value||'Другое';
+  var min=Math.round(TIMER.total/60);
+  var t=todayStr();if(!DB.focus[t])DB.focus[t]={};
+  DB.focus[t][sec]=(DB.focus[t][sec]||0)+min;save();renderFocusWeek();
+  beep();toast('+'+min+' мин фокуса: '+sec+' 🎯');
+}
+function beep(){
+  try{var ctx=new(window.AudioContext||window.webkitAudioContext)();
+    var o=ctx.createOscillator(),g=ctx.createGain();o.connect(g);g.connect(ctx.destination);
+    o.frequency.value=880;o.type='sine';g.gain.value=.2;o.start();
+    setTimeout(function(){o.stop();ctx.close();},400);
+  }catch(e){}
+}
+document.addEventListener('change',function(e){if(e.target&&e.target.id==='focusLen')timerReset();});
+function renderFocusWeek(){
+  var el=document.getElementById('focusWeek');
+  var totals={},start=mondayOf(todayStr()),i,sec;
+  for(i=0;i<7;i++){
+    var per=DB.focus[addDaysISO(start,i)]||{};
+    for(sec in per)totals[sec]=(totals[sec]||0)+per[sec];
+  }
+  var max=1;for(sec in totals)if(totals[sec]>max)max=totals[sec];
+  var html='';
+  for(sec in totals){
+    html+='<div style="margin:6px 0"><div class="row small" style="justify-content:space-between"><span>'+sec+'</span><b>'+totals[sec]+' мин</b></div><div class="fbar"><div style="width:'+(totals[sec]/max*100)+'%"></div></div></div>';
+  }
+  el.innerHTML=html||'<div class="muted small">Пока пусто — запусти таймер!</div>';
+}
+
+/* ================= слово дня ================= */
+function getCurrentWord(){
+  if(!DB.dict.length)return null;
+  var idx=Math.floor(Date.now()/86400000)%DB.dict.length;
+  return DB.dict[idx];
+}
+function renderWordOfDay(){
+  var w=getCurrentWord();
+  if(!w)return '<div class="muted">Словарь пуст — добавь слова в разделе «Языки».</div>';
+  var langJs=(w.lang==='de')?"'de'":"'en'";
+  return '<div class="row" style="font-size:20px"><span style="font-size:30px">'+(w.emoji||'📘')+'</span><b>'+esc(w.word)+'</b></div>'+
+    '<div class="muted" style="margin:6px 0 10px">'+esc(w.tr)+' · '+(w.lang==='de'?'🇩🇪 немецкий':'🇬🇧 английский')+'</div>'+
+    '<button class="btn mini ghost" onclick="speakText(\''+esc(w.word)+'\','+langJs+')">🔊 Послушать</button>';
+}
+function speakText(text,lang){
+  try{var u=new SpeechSynthesisUtterance(text);u.lang=(lang==='de')?'de-DE':'en-US';speechSynthesis.cancel();speechSynthesis.speak(u);}
+  catch(e){toast('Озвучка недоступна в этом браузере');}
+}
+
+/* ================= математика ================= */
+var MATH={1:null,2:null};
+function newMath(n){
+  var a=Math.floor(Math.random()*12)+2,b=Math.floor(Math.random()*9)+2;
+  var ops=['+','-','×'],op=ops[Math.floor(Math.random()*3)];
+  if(op==='-'&&b>a){var c=a;a=b;b=c;}
+  var ans=(op==='+')?(a+b):(op==='-')?(a-b):(a*b);
+  MATH[n]={a:a,b:b,op:op,ans:ans};
+  document.getElementById('mathQ'+(n===2?'2':'')).innerHTML=a+' '+op+' '+b+' = ?';
+  document.getElementById('mathA'+(n===2?'2':'')).value='';
+  document.getElementById('mathRes'+(n===2?'2':'')).textContent='';
+}
+function checkMath(n){
+  var q=MATH[n];if(!q)return;
+  var inp=document.getElementById('mathA'+(n===2?'2':''));
+  var res=document.getElementById('mathRes'+(n===2?'2':''));
+  var ok=+inp.value===q.ans;
+  res.innerHTML=ok?'<span class="score-ok">Верно! 🎉</span>':'<span class="score-bad">Пока нет — будет '+q.ans+'</span>';
+  if(ok){addPoints(1);setTimeout(function(){newMath(n);},900);}
+}
+
+/* ================= итог дня + конфетти ================= */
+function bindDayInputs(){
+  ['dayWord','good1','good2','good3','carryNote'].forEach(function(id){
+    document.getElementById(id).addEventListener('change',function(){
+      var d=dayObj(todayStr());
+      if(id==='dayWord')d.dayWord=this.value;
+      if(id==='good1')d.good1=this.value;
+      if(id==='good2')d.good2=this.value;
+      if(id==='good3')d.good3=this.value;
+      if(id==='carryNote')d.carryNote=this.value;
+      save();
+    });
+  });
+}
+function closeDay(){
+  var d=dayObj(todayStr());
+  if(d.closed){toast('Этот день уже закрыт 🙂');return;}
+  d.closed=true;addPoints(5);confetti();
+  if(d.carryNote&&d.carryNote.trim()){
+    var tm=dayObj(addDaysISO(todayStr(),1));
+    tm.plan.m.push({id:uid(),text:'Из вчера: '+d.carryNote.trim(),done:false});
+  }
+  toast('День закрыт! +5 баллов 🎉');
+  save();renderHome();
+}
+function confetti(){
+  var c=document.getElementById('confetti');c.width=innerWidth;c.height=innerHeight;
+  var ctx=c.getContext('2d');
+  var colors=['#C98FD3','#B6D98C','#1F3A12','#ffffff','#f3e4f6'];
+  var parts=[],i;
+  for(i=0;i<140;i++)parts.push({x:innerWidth/2,y:innerHeight*0.35,vx:(Math.random()-0.5)*14,vy:Math.random()*-12-3,s:Math.random()*7+4,c:colors[i%5],r:Math.random()*Math.PI});
+  var frames=0;
+  (function anim(){
+    ctx.clearRect(0,0,c.width,c.height);frames++;
+    parts.forEach(function(p){
+      p.x+=p.vx;p.y+=p.vy;p.vy+=0.35;p.r+=0.1;
+      ctx.save();ctx.translate(p.x,p.y);ctx.rotate(p.r);ctx.fillStyle=p.c;ctx.fillRect(-p.s/2,-p.s/2,p.s,p.s*0.6);ctx.restore();
+    });
+    if(frames<130)requestAnimationFrame(anim);else ctx.clearRect(0,0,c.width,c.height);
+  })();
+}
+
+/* ================= календарь ================= */
+var CAL_SHIFT=0;
+function calMove(n){CAL_SHIFT+=n;renderCalendar();}
+function renderCalendar(){
+  var base=new Date();base.setDate(1);base.setMonth(base.getMonth()+CAL_SHIFT);
+  document.getElementById('calTitle').textContent=MONTHS_NOM[base.getMonth()]+' '+base.getFullYear();
+  var grid=document.getElementById('calGrid'),html='',i;
+  WD_SHORT.forEach(function(d){html+='<div class="dow">'+d+'</div>';});
+  var first=new Date(base.getFullYear(),base.getMonth(),1);
+  var shift=(first.getDay()+6)%7;
+  for(i=0;i<shift;i++)html+='<div class="day other"></div>';
+  var dim=new Date(base.getFullYear(),base.getMonth()+1,0).getDate();
+  var t=todayStr();
+  for(var dnum=1;dnum<=dim;dnum++){
+    var iso=base.getFullYear()+'-'+pad2(base.getMonth()+1)+'-'+pad2(dnum);
+    var dd=DB.days[iso],cls='day';
+    if(dd&&dd.closed)cls+=' ring';
+    if(iso===t)cls+=' today';
+    html+='<div class="'+cls+'" onclick="showDayInfo(\''+iso+'\')">'+dnum+'</div>';
+  }
+  grid.innerHTML=html;
+}
+function showDayInfo(iso){
+  var dd=DB.days[iso];
+  if(!dd){toast('В этот день записей ещё нет');return;}
+  var msg=fmtRu(iso)+(dd.closed?' · день закрыт 🎉':' · день не закрыт');
+  if(dd.main)msg+=' · главное: '+dd.main;
+  toast(msg);
+}
+
+
+
+/* ================= НЕДЕЛЯ ================= */
+function getWeek(){
+  var m=mondayOf(todayStr());
+  if(!DB.weeks[m])DB.weeks[m]={goals:[],days:[[],[],[],[],[],[],[]]};
+  var w=DB.weeks[m];
+  for(var i=0;i<7;i++)if(!w.days[i])w.days[i]=[];
+  return w;
+}
+function renderWeek(){
+  var m=mondayOf(todayStr()),w=getWeek();
+  document.getElementById('weekRange').textContent='неделя: '+fmtRu(m)+' — '+fmtRu(addDaysISO(m,6));
+  var done=0,total=0;
+  w.days.forEach(function(list){list.forEach(function(x){total++;if(x.done)done++;});});
+  document.getElementById('weekProg').textContent='выполнено: '+done+'/'+total;
+  var gh='';
+  w.goals.forEach(function(g){
+    gh+='<div class="task'+(g.done?' done':'')+'"><input type="checkbox"'+(g.done?' checked':'')+' onchange="toggleWeekGoal(\''+g.id+'\')"><span class="txt" onclick="editWeekGoal(\''+g.id+'\')">'+esc(g.text)+'</span><button class="iconbtn" onclick="delWeekGoal(\''+g.id+'\')">✕</button></div>';
+  });
+  document.getElementById('weekGoals').innerHTML=gh||'<div class="muted small">Сформулируй 2–3 цели недели — например: «Аглийский: 7 часов за неделю».</div>';
+  var t=todayStr(),daysHtml='';
+  for(var i=0;i<7;i++){
+    var iso=addDaysISO(m,i);
+    daysHtml+='<div><h3 class="small">'+WD_SHORT[i]+' · '+parseISO(iso).getDate()+(iso===t?' ✨':'')+'</h3>';
+    var list=w.days[i]||[];
+    if(!list.length)daysHtml+='<div class="muted small">—</div>';
+    list.forEach(function(x){
+      daysHtml+='<div class="task'+(x.done?' done':'')+'"><input type="checkbox"'+(x.done?' checked':'')+' onchange="toggleWeekTask('+i+',\''+x.id+'\')"><span class="txt" onclick="editWeekTask('+i+',\''+x.id+'\')">'+esc(x.text)+'</span><button class="iconbtn" onclick="delWeekTask('+i+',\''+x.id+'\')">✕</button></div>';
+    });
+    daysHtml+='<div class="row"><input type="text" class="grow" placeholder="+ задача" onkeydown="if(event.key===\'Enter\')addWeekTask('+i+',this)"></div></div>';
+  }
+  document.getElementById('weekDays').innerHTML=daysHtml;
+  var lh='';
+  DB.goals.later.forEach(function(x){
+    lh+='<div class="task"><span class="txt">'+esc(x.text)+'</span><button class="iconbtn" title="Сделать целью сезона" onclick="laterToSeason(\''+x.id+'\')">🎯</button><button class="iconbtn" onclick="delLater(\''+x.id+'\')">✕</button></div>';
+  });
+  document.getElementById('laterList').innerHTML=lh||'<div class="muted small">Сюда складывай идеи, которые не входят в этот сезон.</div>';
+}
+function addWeekTask(i,inp){
+  var v=inp.value.trim();if(!v)return;
+  getWeek().days[i].push({id:uid(),text:v,done:false});
+  save();renderWeek();renderHeader();
+}
+function toggleWeekTask(i,id){
+  var x=getWeek().days[i].find(function(t2){return t2.id===id;});if(!x)return;
+  x.done=!x.done;if(x.done)addPoints(1);else if(DB.points>0)DB.points--;
+  save();renderWeek();renderHeader();
+}
+function editWeekTask(i,id){
+  var x=getWeek().days[i].find(function(t2){return t2.id===id;});if(!x)return;
+  var v=prompt('Изменить задачу:',x.text);if(v===null)return;
+  x.text=v.trim()||x.text;save();renderWeek();
+}
+function delWeekTask(i,id){var w=getWeek();w.days[i]=w.days[i].filter(function(t2){return t2.id!==id;});save();renderWeek();}
+function addWeekGoal(){
+  var inp=document.getElementById('inWGoal'),v=inp.value.trim();if(!v)return;
+  getWeek().goals.push({id:uid(),text:v,done:false});inp.value='';save();renderWeek();
+}
+function toggleWeekGoal(id){
+  var g=getWeek().goals.find(function(x){return x.id===id;});if(!g)return;
+  g.done=!g.done;if(g.done)addPoints(2);else if(DB.points>1)DB.points-=2;
+  save();renderWeek();renderHeader();
+}
+function editWeekGoal(id){
+  var g=getWeek().goals.find(function(x){return x.id===id;});if(!g)return;
+  var v=prompt('Изменить цель:',g.text);if(v===null)return;
+  g.text=v.trim()||g.text;save();renderWeek();
+}
+function delWeekGoal(id){var w=getWeek();w.goals=w.goals.filter(function(x){return x.id!==id;});save();renderWeek();}
+function carryUnfinished(){
+  var w=getWeek(),t=todayStr(),m=mondayOf(todayStr()),moved=0;
+  for(var i=0;i<7;i++){
+    var iso=addDaysISO(m,i);
+    if(iso>=t)continue;
+    w.days[i]=w.days[i].filter(function(x){
+      if(!x.done){moved++;return false;}
+      return true;
+    });
+  }
+  var todayIdx=(parseISO(t).getDay()+6)%7;
+  for(var j=0;j<moved;j++)w.days[todayIdx].push({id:uid(),text:'Перенесённая задача',done:false});
+  save();renderWeek();
+  toast(moved?('Перенесено задач: '+moved+' ↪'):'Невыполненного за прошедшие дни нет 🙂');
+}
+function addLater(){
+  var inp=document.getElementById('inLater'),v=inp.value.trim();if(!v)return;
+  DB.goals.later.push({id:uid(),text:v});inp.value='';save();renderWeek();
+}
+function delLater(id){DB.goals.later=DB.goals.later.filter(function(x){return x.id!==id;});save();renderWeek();}
+function laterToSeason(id){
+  if(DB.goals.season.length>=3){toast('В сезоне уже 3 цели — сначала освободи место');return;}
+  var x=DB.goals.later.find(function(t2){return t2.id===id;});if(!x)return;
+  DB.goals.later=DB.goals.later.filter(function(t2){return t2.id!==id;});
+  DB.goals.season.push({id:uid(),title:x.text,tasks:[]});
+  save();renderGoals();renderWeek();toast('Стало целью сезона 🎯');
+}
+
+/* ================= ЦЕЛИ СЕЗОНА ================= */
+function renderGoals(){
+  var total=0,done=0;
+  DB.goals.season.forEach(function(g){g.tasks.forEach(function(t2){total++;if(t2.done)done++;});});
+  document.getElementById('goalProg').textContent='задач выполнено: '+done+'/'+total;
+  var html='';
+  DB.goals.season.forEach(function(g){
+    var gd=0;g.tasks.forEach(function(t2){if(t2.done)gd++;});
+    html+='<div style="margin-bottom:18px"><div class="row" style="justify-content:space-between"><b style="font-size:17px">'+esc(g.title)+' <span class="pill green">'+gd+'/'+g.tasks.length+'</span></b>'+
+      '<span><button class="iconbtn" onclick="delSeasonGoal(\''+g.id+'\')">✕</button></span></div>';
+    if(!g.tasks.length)html+='<div class="muted small">Добавь задачи — они появятся и на главной.</div>';
+    g.tasks.forEach(function(t2){
+      html+='<div class="task'+(t2.done?' done':'')+'"><input type="checkbox"'+(t2.done?' checked':'')+' onchange="toggleGoalTask(\''+g.id+'\',\''+t2.id+'\')"><span class="txt" onclick="editGoalTask(\''+g.id+'\',\''+t2.id+'\')">'+esc(t2.text)+(t2.date?' <span class="tag">на '+fmtRu(t2.date)+'</span>':'')+'</span><button class="iconbtn" onclick="delGoalTask(\''+g.id+'\',\''+t2.id+'\')">✕</button></div>';
+    });
+    html+='<div class="row"><input type="date" id="gdate'+g.id+'" style="width:auto"><input type="text" class="grow" id="gtask'+g.id+'" placeholder="+ задача к цели" onkeydown="if(event.key===\'Enter\')addGoalTask(\''+g.id+'\')"><button class="btn mini" onclick="addGoalTask(\''+g.id+'\')">+</button></div></div>';
+  });
+  document.getElementById('seasonGoals').innerHTML=html||'<div class="muted">Пока нет целей сезона.</div>';
+  document.getElementById('seasonAdd').innerHTML=(DB.goals.season.length<3)
+    ?'<input type="text" id="inSeasonGoal" class="grow" placeholder="Новая цель на сезон"><button class="btn" onclick="addSeasonGoal()">Добавить</button>'
+    :'<span class="muted small">Максимум 3 цели — так фокус работает. Остальные идеи держи в списке «Потом».</span>';
+}
+function addGoalTask(gid){
+  var inp=document.getElementById('gtask'+gid),dateEl=document.getElementById('gdate'+gid);
+  if(!inp)return;
+  var v=inp.value.trim();if(!v)return;
+  var g=DB.goals.season.find(function(x){return x.id===gid;});if(!g)return;
+  var date=dateEl&&dateEl.value?dateEl.value:'';
+  g.tasks.push(mkTask(v,date,false));
+  inp.value='';if(dateEl)dateEl.value='';
+  save();renderGoals();renderHome();
+}
+function toggleGoalTask(gid,tid){
+  var g=DB.goals.season.find(function(x){return x.id===gid;});if(!g)return;
+  var task=g.tasks.find(function(x){return x.id===tid;});if(!task)return;
+  task.done=!task.done;
+  if(task.done)addPoints(1);else if(DB.points>0)DB.points--;
+  save();renderGoals();renderHome();
+}
+function editGoalTask(gid,tid){
+  var g=DB.goals.season.find(function(x){return x.id===gid;});if(!g)return;
+  var t2=g.tasks.find(function(x){return x.id===tid;});if(!t2)return;
+  var v=prompt('Изменить задачу:',t2.text);if(v===null)return;
+  t2.text=v.trim()||t2.text;save();renderGoals();
+}
+function delGoalTask(gid,tid){
+  var g=DB.goals.season.find(function(x){return x.id===gid;});if(!g)return;
+  g.tasks=g.tasks.filter(function(x){return x.id!==tid;});save();renderGoals();renderHome();
+}
+function addSeasonGoal(){
+  if(DB.goals.season.length>=3){toast('Максимум 3 цели');return;}
+  var inp=document.getElementById('inSeasonGoal'),v=inp.value.trim();if(!v)return;
+  DB.goals.season.push({id:uid(),title:v,tasks:[]});inp.value='';save();renderGoals();
+}
+function delSeasonGoal(gid){
+  if(!confirm('Удалить цель со всеми задачами?'))return;
+  DB.goals.season=DB.goals.season.filter(function(x){return x.id!==gid;});save();renderGoals();renderHome();
+}
+
+/* ================= ПРИВЫЧКИ ================= */
+var HAB_SHIFT=0;
+function habMove(n){HAB_SHIFT+=n;renderHabits();}
+function renderHabits(){
+  var base=new Date();base.setDate(1);base.setMonth(base.getMonth()+HAB_SHIFT);
+  var y=base.getFullYear(),mo=base.getMonth();
+  var key=y+'-'+pad2(mo+1);
+  if(!DB.habitLog[key])DB.habitLog[key]={};
+  document.getElementById('habMonthTitle').textContent=MONTHS_NOM[mo]+' '+y;
+  var dim=new Date(y,mo+1,0).getDate();
+  var totalCells=DB.habits.length*dim,doneCells=0;
+  var log=DB.habitLog[key];
+  var html='<table><tr><th class="hname"></th>';
+  for(var d=1;d<=dim;d++)html+='<th>'+d+'</th>';
+  html+='</tr>';
+  DB.habits.forEach(function(h){
+    html+='<tr><td class="hname">'+esc(h.name)+' <button class="iconbtn" onclick="delHabit(\''+h.id+'\')">✕</button></td>';
+    var days=log[h.id]||[];
+    for(var d2=1;d2<=dim;d2++){
+      var on=days.indexOf(d2)>=0;
+      if(on)doneCells++;
+      html+='<td class="cell'+(on?' on':'')+'" onclick="toggleHabitCell(\''+h.id+'\','+d2+',\''+key+'\')"></td>';
+    }
+    html+='</tr>';
+  });
+  html+='</table>';
+  document.getElementById('habGrid').innerHTML=html||'<div class="muted">Добавь первую привычку!</div>';
+  document.getElementById('habProg').textContent=totalCells?('отмечено: '+doneCells+'/'+totalCells):'—';
+}
+function toggleHabitCell(hid,d,key){
+  var log=DB.habitLog[key];if(!log[hid])log[hid]=[];
+  var idx=log[hid].indexOf(d);
+  if(idx>=0){log[hid].splice(idx,1);if(DB.points>0)DB.points--;}
+  else{log[hid].push(d);addPoints(1);}
+  save();renderHabits();
+}
+function addHabit(){
+  var inp=document.getElementById('inHabit'),v=inp.value.trim();if(!v)return;
+  DB.habits.push({id:uid(),name:v});inp.value='';save();renderHabits();
+}
+function delHabit(hid){if(!confirm('Удалить привычку?'))return;DB.habits=DB.habits.filter(function(h){return h.id!==hid;});save();renderHabits();}
+
+
+/* ================= ЯЗЫКИ ================= */
+function renderDict(){
+  document.getElementById('langProg').textContent='слов в словаре: '+DB.dict.length;
+  var html='';
+  DB.dict.forEach(function(d){
+    var langJs=(d.lang==='de')?"'de'":"'en'";
+    html+='<div class="task"><span class="txt">'+ (d.emoji||'📘') +' <b>'+esc(d.word)+'</b> — '+esc(d.tr)+' <span class="tag">'+(d.lang==='de'?'🇩🇪':'🇬🇧')+'</span></span>'+
+      '<button class="iconbtn" onclick="speakText(\''+esc(d.word)+'\','+langJs+')">🔊</button>'+
+      '<button class="iconbtn" onclick="editDict(\''+d.id+'\')">✏️</button>'+
+      '<button class="iconbtn" onclick="delDict(\''+d.id+'\')">✕</button></div>';
+  });
+  document.getElementById('dictList').innerHTML=html||'<div class="muted small">Словарь пуст. Добавь слово: например «goal — цель 🏁».</div>';
+}
+function addDict(){
+  var w=document.getElementById('dicWord').value.trim(),tr=document.getElementById('dicTr').value.trim();
+  if(!w)return;
+  DB.dict.push({id:uid(),lang:document.getElementById('dicLang').value,word:w,tr:tr,emoji:document.getElementById('dicEmoji').value.trim()||'📘',box:1});
+  ['dicWord','dicTr','dicEmoji'].forEach(function(i){document.getElementById(i).value='';});
+  save();renderDict();renderHome();renderFlash();
+}
+function editDict(id){
+  var d=DB.dict.find(function(x){return x.id===id;});if(!d)return;
+  var w=prompt('Слово:',d.word);if(w===null)return;
+  var tr=prompt('Перевод:',d.tr);if(tr===null)return;
+  var em=prompt('Эмодзи:',d.emoji);if(em===null)return;
+  d.word=w.trim()||d.word;d.tr=tr.trim()||d.tr;d.emoji=em.trim()||'📘';
+  save();renderDict();renderHome();
+}
+function delDict(id){DB.dict=DB.dict.filter(function(x){return x.id!==id;});save();renderDict();renderHome();renderFlash();}
+
+var FLASH={i:0,order:[],flip:false};
+function renderFlash(){
+  var el=document.getElementById('flashArea');
+  if(!DB.dict.length){el.innerHTML='<div class="muted">Добавь слова в словарь — и они появятся здесь.</div>';return;}
+  if(!FLASH.order.length||FLASH.i>=FLASH.order.length){
+    FLASH.order=DB.dict.map(function(x){return x.id;});
+    FLASH.order.sort(function(){return Math.random()-0.5;});
+    FLASH.i=0;FLASH.flip=false;
+  }
+  var w=DB.dict.find(function(x){return x.id===FLASH.order[FLASH.i];});
+  if(!w){FLASH.order=[];renderFlash();return;}
+  var langJs=(w.lang==='de')?"'de'":"'en'";
+  el.innerHTML='<div class="flashcard" onclick="flashFlip()">'+
+    '<div class="w">'+(w.emoji||'📘')+' '+esc(w.word)+' <button class="iconbtn" onclick="event.stopPropagation();speakText(\''+esc(w.word)+'\','+langJs+')">🔊</button></div>'+
+    (FLASH.flip?'<div class="t">'+esc(w.tr)+'</div>':'<div class="muted">нажми на карточку, чтобы увидеть перевод</div>')+
+    '</div>'+
+    '<div class="row mt" style="justify-content:center">'+
+    '<button class="btn mini" onclick="flashKnow()">✓ Знаю</button>'+
+    '<button class="btn mini ghost" onclick="flashAgain()">↻ Повторить</button>'+
+    '<button class="btn mini ghost" onclick="flashSkip()">Дальше →</button>'+
+    '<span class="muted small">карточка '+(FLASH.i+1)+' из '+FLASH.order.length+'</span></div>';
+  if(FLASH.flip)speakText(w.word,w.lang);
+}
+function flashFlip(){FLASH.flip=!FLASH.flip;renderFlash();}
+function flashNext(){FLASH.i++;FLASH.flip=false;}
+function flashKnow(){var w=DB.dict.find(function(x){return x.id===FLASH.order[FLASH.i];});if(w)w.box=(w.box||1)+1;flashNext();save();renderFlash();}
+function flashAgain(){var w=DB.dict.find(function(x){return x.id===FLASH.order[FLASH.i];});if(w)w.box=1;flashNext();save();renderFlash();}
+function flashSkip(){flashNext();renderFlash();}
+
+/* конструктор упражнений из текста */
+var LEX={gaps:null,asm:null};
+function makeGapsExercise(){
+  var text=document.getElementById('langText').value.trim();
+  if(!text){toast('Сначала вставь текст');return;}
+  var words=text.split(/\s+/),gaps=[],masked=[];
+  words.forEach(function(w,i){
+    var clean=w.replace(/[^A-Za-zА-Яа-яЁёÄÖÜäöüß'-]/g,'');
+    if(clean.length>=4&&Math.random()<0.18&&gaps.length<12){
+      gaps.push({i:i,answer:clean});
+      masked.push(esc(w).replace(esc(clean),'<input class="gap" id="gap'+i+'" placeholder="'+clean.length+' букв" style="width:'+Math.max(clean.length*12,70)+'px">'));
+    }else masked.push(esc(w));
+  });
+  LEX.gaps={gaps:gaps};
+  var hints='';
+  gaps.forEach(function(g){hints+='<span class="tag">'+esc(g.answer)+'</span>';});
+  document.getElementById('langEx').innerHTML=
+    '<div class="mt"><b>1. Вставь пропущенные слова:</b><div class="mt" style="line-height:2.1">'+masked.join(' ')+'</div>'+
+    '<div class="mt">слова для справок: '+hints+'</div>'+
+    '<div class="row mt"><button class="btn mini" onclick="checkGaps()">Проверить</button><span id="gapsRes"></span></div></div>';
+}
+function checkGaps(){
+  var L=LEX.gaps;if(!L)return;
+  var right=0,wrong=[];
+  L.gaps.forEach(function(g){
+    var inp=document.getElementById('gap'+g.i);
+    if(!inp)return;
+    var v=inp.value.trim().toLowerCase().replace(/[.,!?;:]/g,'');
+    if(v===g.answer.toLowerCase()){inp.style.borderColor='#2e7d32';right++;}
+    else{inp.style.borderColor='#c0504d';wrong.push(g.answer);}
+  });
+  document.getElementById('gapsRes').innerHTML='<span class="score-ok">'+right+'/'+L.gaps.length+' верно</span>'+(wrong.length?' <span class="muted small">сложно: '+wrong.join(', ')+'</span>':'');
+}
+function makeAssembleExercise(){
+  var text=document.getElementById('langText').value.trim();
+  if(!text){toast('Сначала вставь текст');return;}
+  var sents=text.match(/[^.!?\n]+[.!?]/g)||[text];
+  var pickable=sents.filter(function(s){return s.trim().split(/\s+/).length>=4;});
+  if(!pickable.length){toast('Текст слишком короткий');return;}
+  var sent=pickable[Math.floor(Math.random()*pickable.length)].trim();
+  var words=sent.split(/\s+/);
+  var shuffled=words.slice().sort(function(){return Math.random()-0.5;});
+  LEX.asm={sent:sent,words:words,built:[],pool:shuffled};
+  renderAssemble();
+}
+function renderAssemble(){
+  var L=LEX.asm;if(!L)return;
+  var pool=L.pool.map(function(w,i){return '<span class="chip" onclick="pickWord('+i+')">'+esc(w)+'</span>';}).join('');
+  var built=L.built.map(function(w){return '<span class="chip sel">'+esc(w)+'</span>';}).join(' ');
+  document.getElementById('langEx').innerHTML=
+    '<div class="mt"><b>2. Собери предложение, нажимая на слова:</b>'+
+    '<div class="mt" style="min-height:44px;background:#f7f9f4;border-radius:16px;padding:10px">'+(built||'<span class="muted">здесь будет предложение</span>')+'</div>'+
+    '<div class="mt">'+pool+'</div>'+
+    '<div class="row mt"><button class="btn mini" onclick="checkAssemble()">Проверить</button><button class="btn mini ghost" onclick="asmUndo()">↩ Вернуть слово</button><span id="asmRes"></span></div></div>';
+}
+function pickWord(i){
+  var L=LEX.asm;if(!L)return;
+  L.built.push(L.pool.splice(i,1)[0]);
+  renderAssemble();
+}
+function asmUndo(){var L=LEX.asm;if(L&&L.built.length){L.pool.push(L.built.pop());renderAssemble();}}
+function checkAssemble(){
+  var L=LEX.asm;if(!L)return;
+  var norm=function(arr){return arr.join(' ').toLowerCase().replace(/\s+/g,' ');};
+  var ok=norm(L.built)===norm(L.words);
+  document.getElementById('asmRes').innerHTML=ok?'<span class="score-ok">Верно! 🎉</span>':'<span class="score-bad">Пока не сходится — попробуй ещё</span>';
+  if(ok)addPoints(1);
+}
+function addNewWord(w){
+  var tr=prompt('Новое слово: «'+w+'»\nПеревод:');
+  if(tr===null)return;
+  DB.dict.push({id:uid(),lang:'en',word:w,tr:tr.trim()||'?',emoji:'❓',box:1});
+  save();renderDict();toast('Слово добавлено в словарь 📚');
+}
+
+
+
+/* ================= КОУЧИНГ ================= */
+var ACTIVE_BOOK=null;
+function book(){return DB.books.find(function(x){return x.id===ACTIVE_BOOK;});}
+function renderCoach(){
+  document.getElementById('coachProg').textContent='книг: '+DB.books.length;
+  var el=document.getElementById('booksList');
+  if(ACTIVE_BOOK&&book()){el.innerHTML='';renderReader();return;}
+  ACTIVE_BOOK=null;
+  var html='';
+  DB.books.forEach(function(b){
+    html+='<div class="task"><span class="txt" style="cursor:pointer" onclick="openBook(\''+b.id+'\')">📖 <b>'+esc(b.title)+'</b> <span class="tag">закладок: '+(b.bookmarks||[]).length+'</span></span><button class="iconbtn" onclick="delBook(\''+b.id+'\')">✕</button></div>';
+  });
+  el.innerHTML=html||'<div class="muted small">Пока нет книг. Добавь txt-файл или вставь текст сама.</div>';
+  document.getElementById('readerCard').style.display='none';
+}
+function addBookEmpty(){
+  var t=document.getElementById('bookTitle').value.trim();
+  if(!t){toast('Введи название книги');return;}
+  var b={id:uid(),title:t,content:'',highlights:[],bookmarks:[]};
+  DB.books.push(b);document.getElementById('bookTitle').value='';
+  save();openBook(b.id);
+}
+function bookFilePicked(ev){
+  var f=ev.target.files[0];if(!f)return;
+  var reader=new FileReader();
+  reader.onload=function(){
+    var name=f.name.replace(/\.txt$/i,'');
+    DB.books.push({id:uid(),title:name,content:String(reader.result),highlights:[],bookmarks:[]});
+    save();renderCoach();toast('Книга загружена 📖');ev.target.value='';
+  };
+  reader.readAsText(f,'utf-8');
+}
+function delBook(id){if(!confirm('Удалить книгу с закладками?'))return;DB.books=DB.books.filter(function(b){return b.id!==id;});if(ACTIVE_BOOK===id)ACTIVE_BOOK=null;save();renderCoach();}
+function openBook(id){
+  ACTIVE_BOOK=id;
+  var b=book();if(!b)return;
+  document.getElementById('readerTitle').textContent='📖 '+b.title;
+  var body=document.getElementById('readerBody');
+  var paras=(b.content||'').split(/\n+/);
+  var html='';
+  paras.forEach(function(p,i){html+='<p id="bp'+i+'" onclick="setBookmark('+i+')">'+(p.trim()?esc(p):'&nbsp;')+'</p>';});
+  body.innerHTML=html||'<p class="muted">Книга пустая: нажми «Вставить текст заново».</p>';
+  document.getElementById('readerCard').style.display='';
+  (b.bookmarks||[]).forEach(function(bm){var p=document.getElementById('bp'+bm.p);if(p)p.classList.add('marked');});
+  renderReaderLists();
+}
+function closeReader(){ACTIVE_BOOK=null;renderCoach();}
+function replaceBookText(){
+  var b=book();if(!b)return;
+  var v=prompt('Вставь текст книги:',b.content);
+  if(v===null)return;
+  b.content=v;save();openBook(b.id);
+}
+function setBookmark(p){
+  var b=book();if(!b)return;
+  b.bookmarks=b.bookmarks||[];
+  if(b.bookmarks.find(function(x){return x.p===p;})){toast('Закладка на этом абзаце уже есть 🔖');return;}
+  var snippet=(b.content||'').split(/\n+/)[p]||'';
+  b.bookmarks.push({id:uid(),p:p,note:snippet.trim().slice(0,60)});
+  save();renderReaderLists();toast('Закладка поставлена 🔖');
+}
+function addBookmark(){
+  var body=document.getElementById('readerBody');
+  var i=Math.round(body.scrollTop/40);
+  setBookmark(Math.min(i,Math.max(0,body.querySelectorAll('p').length-1)));
+}
+function addHighlight(){
+  var b=book();if(!b)return;
+  var sel=String(window.getSelection()).trim();
+  if(!sel){toast('Сначала выдели мышкой фрагмент текста');return;}
+  var note=prompt('Заметка к выделенному (необязательно):','')||'';
+  b.highlights=b.highlights||[];
+  b.highlights.push({id:uid(),text:sel.slice(0,300),note:note});
+  save();renderReaderLists();getSelection().removeAllRanges();
+}
+function delHighlight(id){var b=book();if(!b)return;b.highlights=b.highlights.filter(function(x){return x.id!==id;});save();renderReaderLists();}
+function delBookmark(id){var b=book();if(!b)return;b.bookmarks=b.bookmarks.filter(function(x){return x.id!==id;});save();renderReaderLists();}
+function goBookmark(p){
+  var elp=document.getElementById('bp'+p);
+  if(elp)elp.scrollIntoView({behavior:'smooth',block:'center'});
+}
+function renderReaderLists(){
+  var b=book();if(!b)return;
+  var bh='';
+  (b.bookmarks||[]).forEach(function(bm){
+    bh+='<div class="task"><span class="txt" style="cursor:pointer" onclick="goBookmark('+bm.p+')">🔖 '+(bm.p+1)+'. '+esc(bm.note)+'…</span><button class="iconbtn" onclick="delBookmark(\''+bm.id+'\')">✕</button></div>';
+  });
+  document.getElementById('bookmarksList').innerHTML=bh||'<div class="muted small">Нажми на абзац в книге, чтобы поставить закладку.</div>';
+  var hh='';
+  (b.highlights||[]).forEach(function(h){
+    hh+='<div class="task"><span class="txt">«'+esc(h.text)+'»'+(h.note?' <span class="tag">'+esc(h.note)+'</span>':'')+'</span><button class="iconbtn" onclick="delHighlight(\''+h.id+'\')">✕</button></div>';
+  });
+  document.getElementById('highlightsList').innerHTML=hh||'<div class="muted small">Выдели фрагмент мышкой и нажми «Сохранить выделенное».</div>';
+}
+
+
+
+/* ================= ПИТОН ================= */
+var PY_THEORY=[
+  ['print и переменные','print() печатает на экран, переменные хранят значения.\n\nname = "Даша"\nprint("Привет,", name)\n\nage = 19\nage = age + 1  # в следующем году будет 20'],
+  ['Числа и input()','input() читает текст с клавиатуры, int() превращает его в число.\n\na = input("Первое число: ")\nb = input("Второе число: ")\nprint(int(a) + int(b))'],
+  ['Условия: if / elif / else','\ntemp = 5\n\nif temp > 20:\n    print("Тепло, можно гулять")\nelif temp > 0:\n    print("Прохладно, надень куртку")\nelse:\n    print("Мороз!")'],
+  ['Списки','Список — это набор значений по порядку.\n\ntasks = ["английский", "спорт", "конспект"]\nprint(tasks[0])      # первый элемент\nprint(len(tasks))    # длина списка\ntasks.append("немецкий")  # добавить в конец'],
+  ['Циклы: for и while','for перебирает элементы, while повторяется, пока условие верно.\n\nfor task in tasks:\n    print("делаю:", task)\n\ncount = 1\nwhile count <= 5:\n    print(count)\n    count = count + 1'],
+  ['Функции','Функция — это блок кода с именем, который можно вызывать.\n\ndef greeting(name):\n    return "Привет, " + name + "!"\n\nprint(greeting("Даша"))']
+];
+var PY_TASKS=[
+  {q:'Программа печатает «Привет, Даша!»',hint:'Используй print().',sol:'print("Привет, Даша!")'},
+  {q:'Считывает два числа и печатает их сумму',hint:'input() + int().',sol:'a = int(input())\nb = int(input())\nprint(a + b)'},
+  {q:'Проверяет, чётное ли число',hint:'Остаток от деления: n % 2.',sol:'n = int(input())\nif n % 2 == 0:\n    print("чётное")\nelse:\n    print("нечётное")'},
+  {q:'Печатает каждый элемент списка с новой строки',hint:'Цикл for.',sol:'tasks = ["английский", "спорт", "конспект"]\nfor t in tasks:\n    print(t)'},
+  {q:'Считает сумму чисел от 1 до 100',hint:'for + накопитель.',sol:'s = 0\nfor i in range(1, 101):\n    s = s + i\nprint(s)'},
+  {q:'Функция greeting(name), которая возвращает «Привет, имя!»',hint:'def и return.',sol:'def greeting(name):\n    return "Привет, " + name + "!"\n\nprint(greeting("Даша"))'}
+];
+function renderPython(){
+  var done=0;PY_TASKS.forEach(function(t,i){if(DB.python.done[i])done++;});
+  document.getElementById('pyProg').textContent='решено: '+done+'/'+PY_TASKS.length;
+  var th='';
+  PY_THEORY.forEach(function(t2){
+    th+='<details><summary>'+esc(t2[0])+'</summary><pre style="white-space:pre-wrap;font-family:inherit;margin-top:8px">'+esc(t2[1])+'</pre></details>';
+  });
+  document.getElementById('pyTheory').innerHTML=th;
+  var ph='';
+  PY_TASKS.forEach(function(t2,i){
+    var sol=DB.python.solutions[i]||'';
+    ph+='<div style="margin-bottom:18px"><b>'+t2.q+'</b> <span class="muted small">'+esc(t2.hint)+'</span>'+
+      '<textarea rows="4" class="mt" placeholder="Моё решение..." onchange="savePySolution('+i+',this.value)">'+esc(sol)+'</textarea>'+
+      '<div class="row mt"><label class="pill" style="cursor:pointer"><input type="checkbox"'+(DB.python.done[i]?' checked':'')+' onchange="togglePyDone('+i+')" style="margin-right:6px">Решена</label>'+
+      '<details style="flex:1"><summary>Показать решение</summary><pre style="white-space:pre-wrap;font-family:inherit;margin-top:8px">'+esc(t2.sol)+'</pre></details></div></div>';
+  });
+  document.getElementById('pyTasks').innerHTML=ph;
+}
+function savePySolution(i,v){DB.python.solutions[i]=v;save();}
+function togglePyDone(i){
+  DB.python.done[i]=!DB.python.done[i];
+  if(DB.python.done[i])addPoints(1);else if(DB.points>0)DB.points--;
+  save();renderPython();
+}
+
+
+
+/* ================= РАЗВИТИЕ ================= */
+var SPEECH_TASKS=[
+  'Опиши свой день от лица человека, которому ты помогаешь как коуч.',
+  'Расскажи вслух за 1 минуту, почему тебе интересен коучинг. Запиши себя на диктофон и послушай.',
+  'Объясни вслух, что такое цикл for в питоне, так, будто говоришь с 8-летним ребёнком.',
+  'Подбери 5 синонимов к слову «энергия» и составь с каждым предложение.',
+  'Опиши лучший день мероприятия, где ты координировала фотобудку, чтобы человек это представил.',
+  'Скажи комплимент — себе, кому-то из близких и незнакомцу. Сформулируй его в трёх вариантах.'
+];
+var CHESS=[
+  {pos:'8  . . . . . . k p\n7  . . . . p p p .\n6  . . . . . . . .\n5  . . . . . . . .\n4  . . . . . . . .\n3  . . . . . . . .\n2  P P P P P P P P\n1  R . . . . . K .\n\nБелые: король g1, ладья a1. Чёрные: король g8, пешки f7, g7, h7.',ans:'Ra8',hint:'Ладья на последнюю горизонталь.'},
+  {pos:'8  . . . . . . k .\n7  . . p p . p p p\n6  . . . . . . . .\n5  . . . . . . . .\n4  . . . . . . . .\n3  . . . . . . . .\n2  P P P P P P P P\n1  Q . . . . . K .\n\nБелые: король g1, ферзь a1. Чёрные: король g8, пешки c7, d7, f7, g7, h7.',ans:'Qa8',hint:'Ферзь на дальнюю горизонталь — мат на 8-й линии.'},
+  {pos:'8  . . . . . . k .\n7  R . . . . p p p\n6  . . . . . . . .\n5  . . . . . . . .\n4  . . . . . . . .\n3  . . . . . . . .\n2  P P P P P P . P\n1  . . . . . . K .\n\nБелые: король g1, ладья a7. Чёрные: король g8, пешки f7, g7, h7.',ans:'Ra8',hint:'Ладья идёт на 8-ю, а 7-я линия уже держится.'}
+];
+var Q_DAY_LIST=[
+  'Что сегодня дало мне энергию, а что забрало?',
+  'Если бы у меня было агентство уже завтра — какое правило я бы ввела первым?',
+  'Чему меня научила вчерашняя ошибка?',
+  'Какая привычка сильнее всего приближает меня к цели на сезон?',
+  'Что бы я сделала, если бы не боялась чужого мнения?',
+  'За что я могу поблагодарить себя сегодня?',
+  'Что в моём дне я делаю только по привычке, хотя это не нужно?',
+  'Кто из окружения вдохновляет меня расти — и почему?',
+  'Какое маленькое действие за 10 минут сделает завтрашний день лучше?',
+  'Что для меня значит «рациональность» — и где она мне мешает?'
+];
+var FIN_ARTICLES=[
+  ['Подушка безопасности: с чего начинается спокойствие',
+   'Прежде чем куда-то инвестировать, собери резерв: 3–6 месяцев обычных расходов на вкладе или накопительном счёте. Это деньги «на чёрный день»: если сломается ноутбук или не будет подработки, не придётся брать кредит. Начни с маленькой цели — например, 15 000 ₽ — и откладывай фиксированную сумму каждый месяц.'],
+  ['Сложный процент: почему начать в 19 лет — огромный плюс',
+   'Сложный процент — это когда доход начинает приносить доход. Если откладывать по 2 000 ₽ в месяц под 10% годовых, через 10 лет будет около 400 000 ₽, и больше трети из них — проценты. Чем раньше старт, тем сильнее эффект. Поэтому даже маленькие суммы в 19 лет — это больше, чем большие суммы в 35.'],
+  ['Куда вообще вкладывают деньги',
+   'Основные варианты: банковские вклады и накопительные счета (надёжно, но доходность небольшая), облигации (ты как бы даёшь в долг компании или государству, доходность выше вклада), акции (доля в компании, доходность выше, но риск выше), фонды (ETF и ПИФы — одной покупкой ты владеешь кусочком десятков компаний). Для новичка логично: подушка → вклад → облигации → и только потом акции.'],
+  ['Правило 50/30/20 для личного бюджета',
+   'Раздели доход на три части: 50% — необходимое (еда, транспорт, учёба), 30% — приятное (кофейня, кино, мелочи), 20% — сбережения и инвестиции. Если 20% пока не получается — начни хотя бы с 5–10%, главное — регулярность. Заполни таблицу расходов неделю, и сразу станет видно, куда утекают деньги.'],
+  ['Риск и диверсификация простыми словами',
+   'Диверсификация — это «не класть все яйца в одну корзину». Если все деньги лежат в акциях одной компании, плохая новость о ней обнуляет сбережения. Если деньги распределены (вклад + облигации + фонд из многих акций), просадка одной части смягчается остальными. Правило начинающих: чем меньше денег ты готова потерять — тем консервативнее выбор.']
+];
+function renderDev(){
+  var st=SPEECH_TASKS[Math.floor(Date.now()/86400000)%SPEECH_TASKS.length];
+  document.getElementById('speechTask').innerHTML='<div class="flashcard" style="min-height:100px;cursor:default"><div style="font-size:17px;font-weight:600">'+st+'</div></div>';
+  var ch='';
+  CHESS.forEach(function(c,i){
+    ch+='<details><summary>Задача '+(i+1)+'</summary><pre style="font-family:inherit;white-space:pre-wrap;line-height:1.5">'+esc(c.pos)+'</pre>'+
+      '<div class="row mt"><input type="text" id="chessA'+i+'" placeholder="Ход (например: Ra8)" style="width:170px"><button class="btn mini" onclick="checkChess('+i+')">Проверить</button><span id="chessRes'+i+'"></span></div></details>';
+  });
+  document.getElementById('chessArea').innerHTML=ch;
+  var rd='';
+  DB.toRead.forEach(function(bk){
+    rd+='<div class="task'+(bk.done?' done':'')+'"><input type="checkbox"'+(bk.done?' checked':'')+' onchange="toggleToRead(\''+bk.id+'\')"><span class="txt">'+esc(bk.title)+'</span><button class="iconbtn" onclick="delToRead(\''+bk.id+'\')">✕</button></div>';
+  });
+  document.getElementById('toReadList').innerHTML=rd;
+  var qi=Math.floor(Date.now()/86400000)%Q_DAY_LIST.length;
+  if(!DB.qOfDay||DB.qOfDay.date!==todayStr()){DB.qOfDay={date:todayStr(),answer:''};save();}
+  document.getElementById('qOfDay').innerHTML='<div class="flashcard" style="min-height:80px;cursor:default"><div style="font-size:17px;font-weight:600">'+esc(Q_DAY_LIST[qi])+'</div></div>';
+  var qa=document.getElementById('qAnswer');
+  if(document.activeElement!==qa)qa.value=DB.qOfDay.answer||'';
+  var eh='';
+  DB.essays.forEach(function(es){
+    eh+='<details><summary>'+esc(es.topic)+'</summary><textarea rows="6" onchange="saveEssay(\''+es.id+'\',this.value)">'+esc(es.text)+'</textarea>'+
+      '<div class="row mt"><button class="btn mini ghost" onclick="delEssay(\''+es.id+'\')">Удалить</button></div></details>';
+  });
+  document.getElementById('essayList').innerHTML=eh||'<div class="muted small">Создай тему выше — и здесь появится твоё эссе.</div>';
+  var fh='';
+  FIN_ARTICLES.forEach(function(a){
+    fh+='<details><summary>'+esc(a[0])+'</summary><div class="mt" style="line-height:1.6">'+esc(a[1])+'</div></details>';
+  });
+  document.getElementById('finArticles').innerHTML=fh;
+}
+function checkChess(i){
+  var c=CHESS[i],v=document.getElementById('chessA'+i).value.trim().toLowerCase().replace(/[+#!?]/g,'');
+  var ok=v===c.ans.toLowerCase();
+  document.getElementById('chessRes'+i).innerHTML=ok?'<span class="score-ok">Мат! 🎉 +1 балл</span>':'<span class="score-bad">Не тот ход. Подсказка: '+esc(c.hint)+'</span>';
+  if(ok&&!DB['chess'+i]){DB['chess'+i]=true;addPoints(1);}
+}
+function toggleToRead(id){
+  var b=DB.toRead.find(function(x){return x.id===id;});if(!b)return;
+  b.done=!b.done;if(b.done)addPoints(1);else if(DB.points>0)DB.points--;
+  save();renderDev();
+}
+function addToRead(){
+  var inp=document.getElementById('inToRead'),v=inp.value.trim();if(!v)return;
+  DB.toRead.push({id:uid(),title:v,done:false});inp.value='';save();renderDev();
+}
+function delToRead(id){DB.toRead=DB.toRead.filter(function(x){return x.id!==id;});save();renderDev();}
+function saveQAnswer(){DB.qOfDay.answer=document.getElementById('qAnswer').value;save();toast('Размышления сохранены 💭');}
+function newEssay(){
+  var inp=document.getElementById('essayTopic'),v=inp.value.trim();if(!v)return;
+  DB.essays.push({id:uid(),topic:v,text:''});inp.value='';save();renderDev();
+}
+function saveEssay(id,v){var e=DB.essays.find(function(x){return x.id===id;});if(e){e.text=v;save();toast('Эссе сохранено 📝');}}
+function delEssay(id){if(!confirm('Удалить эссе?'))return;DB.essays=DB.essays.filter(function(x){return x.id!==id;});save();renderDev();}
+
+
+
+/* ================= ЗДОРОВЬЕ ================= */
+function renderHealth(){
+  var w=DB.health;
+  var total=w.workouts.length,done=0;
+  w.workouts.forEach(function(x){if(x.done)done++;});
+  document.getElementById('healthProg').textContent='тренировки: '+done+'/'+total;
+  var daysSel='';
+  for(var i=0;i<7;i++)daysSel+='<option value="'+i+'">'+WD_SHORT[i]+'</option>';
+  document.getElementById('workoutDay').innerHTML=daysSel;
+  var wh='';
+  for(var i2=0;i2<7;i2++){
+    wh+='<div><h3 class="small">'+WD_SHORT[i2]+'</h3>';
+    var list=w.workouts.filter(function(x){return x.day===i2;});
+    if(!list.length)wh+='<div class="muted small">—</div>';
+    list.forEach(function(x){
+      wh+='<div class="task'+(x.done?' done':'')+'"><input type="checkbox"'+(x.done?' checked':'')+' onchange="toggleWorkout(\''+x.id+'\')"><span class="txt">'+esc(x.text)+'</span><button class="iconbtn" onclick="delWorkout(\''+x.id+'\')">✕</button></div>';
+    });
+    wh+='</div>';
+  }
+  document.getElementById('workoutList').innerHTML=wh;
+  var t=todayStr();
+  document.getElementById('waterNum').textContent=(w.water[t]||0);
+  var nEl=document.getElementById('nutritionText');
+  if(document.activeElement!==nEl)nEl.value=w.nutrition[t]||'';
+  renderCycle();
+  var SYMPTOMS=['болит живот','головная боль','усталость','прыщи','смена настроения','тянет поясницу','всё ок'];
+  var sym=w.cycle.symptoms[t]||[];
+  var sh='';
+  SYMPTOMS.forEach(function(s){
+    sh+='<span class="chip'+(sym.indexOf(s)>=0?' sel':'')+'" onclick="toggleSymptom(\''+s+'\')">'+s+'</span>';
+  });
+  document.getElementById('symptomsArea').innerHTML=sh;
+}
+function addWorkout(){
+  var inp=document.getElementById('inWorkout'),day=+document.getElementById('workoutDay').value,v=inp.value.trim();
+  if(!v)return;
+  DB.health.workouts.push({id:uid(),day:day,text:v,done:false});inp.value='';save();renderHealth();
+}
+function toggleWorkout(id){
+  var x=DB.health.workouts.find(function(w){return w.id===id;});if(!x)return;
+  x.done=!x.done;if(x.done)addPoints(1);else if(DB.points>0)DB.points--;
+  save();renderHealth();
+}
+function delWorkout(id){DB.health.workouts=DB.health.workouts.filter(function(w){return w.id!==id;});save();renderHealth();}
+function water(n){
+  var t=todayStr();
+  DB.health.water[t]=Math.max(0,(DB.health.water[t]||0)+n);
+  if(n>0&&DB.health.water[t]%4===0)addPoints(1);
+  save();renderHealth();
+}
+function saveNutrition(){DB.health.nutrition[todayStr()]=document.getElementById('nutritionText').value;save();toast('Питание записано 🥗');}
+function renderCycle(){
+  var t=todayStr(),starts=(DB.health.cycle.starts||[]).slice().sort().reverse();
+  var el=document.getElementById('cycleInfo');
+  if(!starts.length){el.innerHTML='<div class="muted">Отметь дату начала последнего цикла — и кабинет начнёт считать фазы.</div>';return;}
+  var avg=28;
+  if(starts.length>1){
+    var diffs=[];
+    for(var i=0;i<starts.length-1&&i<5;i++){
+      diffs.push(Math.round((parseISO(starts[i])-parseISO(starts[i+1]))/86400000));
+    }
+    var s=0;diffs.forEach(function(d){s+=d;});
+    avg=Math.max(20,Math.min(35,Math.round(s/diffs.length)));
+  }
+  var dayN=Math.floor((parseISO(t)-parseISO(starts[0]))/86400000)+1;
+  var name,tips;
+  if(dayN<1){el.innerHTML='<div class="muted">Отмеченная дата в будущем — проверь дату начала цикла.</div>';return;}
+  if(dayN>avg&&dayN>35){name='ждём начала нового цикла';tips='Отметь начало следующего цикла, когда оно начнётся — расчёт станет точнее.';}
+  else if(dayN<=5){name='менструальная фаза (1–5 день)';tips='Мягкие нагрузки: прогулка, растяжка, йога без глубоких скруток. Ешь продукты с железом: гречка, говядина, гранат, тёмная зелень. Больше тёплого, меньше кофеина.';}
+  else if(dayN<=13){name='фолликулярная фаза';tips='Энергия растёт — время для силовых и новых задач! Ешь белок и сложные углеводы (крупы, овощи). Сложные дела планируй именно на эти дни.';}
+  else if(dayN<=16){name='овуляция (окно ~14–16 день)';tips='Пик энергии: можно интенсивную тренировку. Пей достаточно воды, добавь омега-3 (рыба, орехи, авокадо).';}
+  else{name='лютеиновая фаза';tips='Энергия мягко снижается: ближе к концу фазы — спокойные тренировки, ходьба, растяжка. Добавь сложные углеводы и магний (орехи, бананы, тёмный шоколад). Меньше соли и сахара — меньше отёков.';}
+  var history=starts.map(function(s){return s.slice(8,10)+'.'+s.slice(5,7);}).join(' · ');
+  el.innerHTML='<div class="row" style="gap:18px;flex-wrap:wrap">'+
+    '<div><span class="muted small">средняя длина</span><div style="font-size:24px;font-weight:800">'+avg+' дн.</div></div>'+
+    '<div><span class="muted small">сегодня</span><div style="font-size:24px;font-weight:800">'+dayN+'-й день</div></div>'+
+    '<div><span class="muted small">фаза</span><div style="font-size:18px;font-weight:800;color:#8a4b93">'+esc(name)+'</div></div></div>'+
+    '<div class="mt" style="background:#f6f7f3;border-radius:16px;padding:12px 16px;line-height:1.6"><b>Подсказка:</b> '+esc(tips)+'</div>'+
+    '<div class="mt small muted">История начал цикла: '+history+'</div>';
+}
+function addCycleStart(){
+  var v=document.getElementById('cycleDate').value;
+  if(!v){toast('Выбери дату начала цикла');return;}
+  DB.health.cycle.starts=DB.health.cycle.starts||[];
+  if(DB.health.cycle.starts.indexOf(v)<0)DB.health.cycle.starts.push(v);
+  save();renderCycle();
+}
+function toggleSymptom(s){
+  var t=todayStr(),sy=DB.health.cycle.symptoms;
+  sy[t]=sy[t]||[];
+  var idx=sy[t].indexOf(s);
+  if(idx>=0)sy[t].splice(idx,1);else sy[t].push(s);
+  save();renderHealth();
+}
+
+
+
+/* ================= ИГРА ================= */
+function renderGame(){
+  document.getElementById('gameProg').textContent='баллов: '+DB.points;
+  var rh='';
+  DB.rewards.forEach(function(r){
+    var can=DB.points>=r.price;
+    rh+='<div class="shop-item"><span style="flex:1">'+esc(r.name)+'</span><span class="price">'+r.price+' 🪙</span>'+
+      (can?'<button class="btn mini" onclick="buyReward(\''+r.id+'\')">Забрать</button>':'<span class="muted small">копим дальше</span>')+
+      '<button class="iconbtn" onclick="delReward(\''+r.id+'\')">✕</button></div>';
+  });
+  document.getElementById('rewardsList').innerHTML=rh||'<div class="muted small">Придумай первую награду — ты заслуживаешь!</div>';
+  var wh2='';
+  DB.wishlist.forEach(function(wr){
+    var pct=Math.min(100,Math.round(wr.saved/Math.max(1,wr.price)*100));
+    wh2+='<div style="margin-bottom:14px"><div class="row" style="justify-content:space-between"><b>'+esc(wr.name)+'</b><span class="muted">'+wr.saved+' / '+wr.price+' ₽</span></div>'+
+      '<div class="fbar"><div style="width:'+pct+'%"></div></div>'+
+      '<div class="row mt"><input type="number" id="dep'+wr.id+'" placeholder="Сумма ₽" style="width:110px"><button class="btn mini" onclick="deposit(\''+wr.id+'\')">В копилку</button><button class="iconbtn" onclick="delWish(\''+wr.id+'\')">✕</button></div></div>';
+  });
+  document.getElementById('wishList').innerHTML=wh2||'<div class="muted small">Добавь мечту и начинай копить 🐖</div>';
+}
+function addReward(){
+  var n=document.getElementById('rewardName').value.trim(),p=+document.getElementById('rewardPrice').value;
+  if(!n||!p){toast('Укажи название и цену в баллах');return;}
+  DB.rewards.push({id:uid(),name:n,price:p});
+  document.getElementById('rewardName').value='';document.getElementById('rewardPrice').value='';
+  save();renderGame();
+}
+function buyReward(id){
+  var r=DB.rewards.find(function(x){return x.id===id;});if(!r)return;
+  if(DB.points<r.price){toast('Пока не хватает баллов');return;}
+  DB.points-=r.price;
+  DB.rewards=DB.rewards.filter(function(x){return x.id!==id;});
+  save();renderHeader();renderGame();confetti();
+  toast('Награда получена: '+r.name+' 🎁');
+}
+function delReward(id){DB.rewards=DB.rewards.filter(function(x){return x.id!==id;});save();renderGame();}
+function addWish(){
+  var n=document.getElementById('wishName').value.trim(),p=+document.getElementById('wishPrice').value;
+  if(!n||!p){toast('Укажи мечту и цену');return;}
+  DB.wishlist.push({id:uid(),name:n,price:p,saved:0});
+  document.getElementById('wishName').value='';document.getElementById('wishPrice').value='';
+  save();renderGame();
+}
+function deposit(id){
+  var w=DB.wishlist.find(function(x){return x.id===id;});if(!w)return;
+  var v=+document.getElementById('dep'+id).value;
+  if(!v)return;
+  w.saved=Math.max(0,w.saved+v);
+  if(w.saved>=w.price)confetti();
+  save();renderGame();
+}
+function delWish(id){DB.wishlist=DB.wishlist.filter(function(x){return x.id!==id;});save();renderGame();}
+
+/* ================= ДАННЫЕ ================= */
+function exportData(){
+  var blob=new Blob([JSON.stringify(DB,null,2)],{type:'application/json'});
+  var a=document.createElement('a');
+  a.href=URL.createObjectURL(blob);
+  a.download='kabinet-dashi-'+todayStr()+'.json';
+  document.body.appendChild(a);a.click();a.remove();
+  toast('Файл создан — проверь загрузки ⬇');
+}
+function importData(ev){
+  var f=ev.target.files[0];if(!f)return;
+  var reader=new FileReader();
+  reader.onload=function(){
+    try{
+      var data=JSON.parse(String(reader.result));
+      if(!data||!data.goals)throw new Error('bad');
+      DB=data;save();renderAll();toast('Данные загружены ✅');
+    }catch(e){toast('Файл не похож на экспорт кабинета');}
+  };
+  reader.readAsText(f);
+}
+function resetAll(){
+  if(!confirm('Сбросить ВСЕ записи и вернуть примеры? Это нельзя отменить.'))return;
+  DB=seedData();save();renderAll();toast('Готово — снова примеры');
+}
+
+/* ================= старт ================= */
+buildNav();
+showSection('sec-home');
+timerReset();
+bindDayInputs();
+newMath(1);newMath(2);
+
+</script>
+</body>
+</html>
