@@ -13,6 +13,8 @@ html{scroll-behavior:smooth}
 body{
   font-family:'Manrope','Segoe UI',Arial,sans-serif;
   background:#E3E7DE;
+  background-image:linear-gradient(rgba(31,58,18,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(31,58,18,.04) 1px,transparent 1px);
+  background-size:36px 36px;
   color:#1F3A12;
   padding-bottom:20px;
 }
@@ -30,18 +32,31 @@ textarea{width:100%;resize:vertical;line-height:1.5}
   box-shadow:0 10px 30px rgba(31,58,18,.08);
   margin-top:20px;
 }
-.card h3{font-size:19px;font-weight:800;margin-bottom:12px}
+.card h3{
+  font-size:12.5px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;
+  margin-bottom:14px;display:flex;align-items:center;gap:10px;line-height:1.5;
+}
+section{counter-reset:cc}
+.card h3::before{
+  counter-increment:cc;content:counter(cc,decimal-leading-zero);
+  background:#C98FD3;color:#fff;border-radius:999px;font-size:10px;letter-spacing:.08em;
+  padding:3px 9px;flex:none;
+}
+.card h3.small{font-size:11.5px;letter-spacing:.16em;color:#5c6b52;margin-bottom:8px}
+.card h3.small::before{content:none;counter-increment:none}
+.card h3 .small{letter-spacing:.02em;text-transform:none;font-weight:600}
 .muted{color:#7c8a72;font-size:14px}
 .btn{
-  background:#1F3A12;color:#fff;font-weight:700;font-size:14px;
-  padding:10px 18px;border-radius:16px;transition:transform .1s, opacity .2s;
+  background:#1F3A12;color:#fff;font-weight:700;font-size:13.5px;
+  padding:10px 20px;border-radius:999px;transition:transform .1s, opacity .2s;
+  letter-spacing:.04em;
 }
 .btn:hover{opacity:.88}
 .btn:active{transform:scale(.97)}
 .btn.lilac{background:#C98FD3}
 .btn.salad{background:#B6D98C;color:#1F3A12}
 .btn.ghost{background:#eef2e9;color:#1F3A12}
-.btn.mini{padding:6px 12px;font-size:13px;border-radius:12px}
+.btn.mini{padding:7px 14px;font-size:12.5px;border-radius:999px}
 .btn.danger{background:#f3e3e3;color:#a33}
 .row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
 .grow{flex:1}
@@ -52,48 +67,69 @@ textarea{width:100%;resize:vertical;line-height:1.5}
 ul.clean{list-style:none}
 li.row{margin:8px 0}
 
-header.hero{
-  background:linear-gradient(120deg,#1F3A12 0%,#4b7a2a 45%,#C98FD3 100%);
-  color:#fff;border-radius:0 0 34px 34px;padding:26px 0 22px;
+aside#sidebar{
+  position:fixed;left:22px;top:22px;bottom:22px;width:238px;z-index:60;
+  background:#1F3A12;color:#dff0d0;border-radius:28px;
+  box-shadow:0 16px 40px rgba(31,58,18,.28);
+  display:flex;flex-direction:column;padding:24px 14px 20px;
 }
-header.hero h1{font-size:28px;font-weight:800;line-height:1.2}
-header.hero .sub{opacity:.85;font-size:14px;margin-top:6px}
-.points-pill{background:rgba(255,255,255,.18);border-radius:999px;padding:7px 16px;font-weight:800;font-size:15px}
+aside#sidebar .sb-brand{
+  font-size:12px;font-weight:800;letter-spacing:.24em;text-transform:uppercase;
+  opacity:.8;margin:2px 10px 4px;
+}
+aside#sidebar .sb-hi{font-size:13px;font-weight:700;color:#fff;margin:0 10px 16px}
+nav#nav{display:flex;flex-direction:column;gap:5px;overflow-y:auto}
+nav#nav button{
+  display:flex;align-items:center;gap:10px;width:100%;text-align:left;
+  background:rgba(255,255,255,.06);color:#e7f2dc;font-weight:700;font-size:14px;
+  border-radius:16px;padding:11px 14px;white-space:nowrap;
+}
+nav#nav button:hover{background:rgba(255,255,255,.13)}
+nav#nav button.active{background:#C98FD3;color:#fff}
+aside#sidebar .sb-foot{margin-top:auto;padding:14px 10px 0;border-top:1px solid rgba(255,255,255,.14)}
+.sb-points{font-weight:800;font-size:15px;color:#fff;margin-bottom:10px}
+.sb-catbar{height:8px;background:rgba(255,255,255,.16);border-radius:999px;overflow:hidden;margin-bottom:8px}
+.sb-catbar b{display:block;height:100%;width:0%;background:#B6D98C;border-radius:999px;transition:width .4s}
+.sb-catmsg{font-size:11.5px;opacity:.75;line-height:1.5}
+
+header.hero{background:transparent;color:#1F3A12;padding:34px 0 2px}
+header.hero h1{font-size:clamp(28px,4.2vw,42px);font-weight:800;letter-spacing:.05em;text-transform:uppercase;line-height:1.15}
+header.hero .day-phrase{color:#8a4b93;font-style:italic;font-size:15px;margin-top:6px}
+header.hero .sub{font-size:12px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;opacity:.55;margin-top:8px}
+.hero-meta{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:16px}
+.points-pill{background:#1F3A12;color:#fff;border-radius:999px;padding:8px 18px;font-weight:800;font-size:14.5px}
 .cat-track{
-  position:relative;height:40px;margin-top:14px;
-  background:rgba(255,255,255,.16);border-radius:999px;overflow:visible;
+  flex:1;min-width:220px;position:relative;height:40px;
+  background:#f5f8f0;border-radius:999px;
   display:flex;align-items:center;justify-content:space-between;padding:0 12px;
 }
-.cat-track .pawline{position:absolute;left:40px;right:44px;top:50%;height:3px;background:rgba(255,255,255,.35);border-radius:3px;transform:translateY(-50%)}
+.cat-track .pawline{position:absolute;left:40px;right:44px;top:50%;height:3px;background:#dfe4d8;border-radius:3px;transform:translateY(-50%)}
 .cat-track .cat{position:relative;font-size:26px;transition:left .5s ease;left:0}
 .cat-track .yarn{font-size:26px;position:relative;z-index:2}
-.cat-label{position:absolute;right:0;top:-24px;font-size:12px;background:rgba(31,58,18,.75);padding:3px 10px;border-radius:10px}
-
-nav#nav{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:16px}
-nav#nav button{
-  background:#fff;color:#1F3A12;font-weight:700;font-size:14px;
-  border-radius:16px;padding:9px 16px;box-shadow:0 4px 14px rgba(31,58,18,.07);
-  white-space:nowrap;
-}
-nav#nav button.active{background:#1F3A12;color:#fff}
-@media(max-width:760px){
-  nav#nav{
-    position:fixed;bottom:0;left:0;right:0;z-index:50;background:#fff;
-    box-shadow:0 -6px 20px rgba(31,58,18,.12);border-radius:22px 22px 0 0;
-    overflow-x:auto;justify-content:flex-start;flex-wrap:nowrap;margin:0;padding:10px;
+.cat-label{position:absolute;right:12px;bottom:-24px;font-size:12px;color:#7c8a72}
+@media(min-width:961px){body{padding-left:286px}}
+@media(max-width:960px){
+  aside#sidebar{
+    left:10px;right:10px;top:auto;bottom:10px;width:auto;border-radius:24px;
+    padding:10px;flex-direction:column;
   }
-  body{padding-bottom:86px}
+  aside#sidebar .sb-brand,aside#sidebar .sb-hi,aside#sidebar .sb-foot{display:none}
+  nav#nav{flex-direction:row;overflow-x:auto;gap:6px}
+  nav#nav button{padding:9px 14px;font-size:13.5px}
+  header.hero{padding-top:24px}
+  body{padding-bottom:104px}
 }
 
 .sec-head{
-  border-radius:28px;padding:24px 26px;color:#fff;margin-top:20px;
-  background:linear-gradient(110deg,#1F3A12,#6f9e46 55%,#C98FD3);
+  border-radius:28px;padding:30px 30px;color:#fff;margin-top:24px;
+  background:linear-gradient(115deg,#1F3A12 0%,#48761f 52%,#8a5f96 86%,#C98FD3 100%);
   box-shadow:0 10px 30px rgba(31,58,18,.14);
   display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;
 }
-.sec-head h2{font-size:24px;font-weight:800}
-.sec-head .sec-sub{opacity:.85;font-size:13.5px;margin-top:4px}
-.prog{background:rgba(255,255,255,.2);border-radius:999px;padding:8px 18px;font-weight:800;font-size:15px}
+.sec-head .sec-num{font-size:12px;font-weight:800;letter-spacing:.24em;text-transform:uppercase;opacity:.7;margin-bottom:6px}
+.sec-head h2{font-size:clamp(24px,3vw,32px);font-weight:800;letter-spacing:.07em;text-transform:uppercase}
+.sec-head .sec-sub{opacity:.8;font-size:12.5px;letter-spacing:.14em;text-transform:uppercase;margin-top:8px}
+.prog{background:rgba(255,255,255,.2);border-radius:999px;padding:8px 18px;font-weight:800;font-size:13.5px;letter-spacing:.05em}
 
 .task{display:flex;align-items:center;gap:10px;padding:9px 10px;border-radius:14px;background:#f7f9f4;margin:7px 0}
 .task input[type=checkbox]{width:20px;height:20px;accent-color:#1F3A12;flex:none}
@@ -121,7 +157,18 @@ nav#nav button.active{background:#1F3A12;color:#fff}
 .cal .day.today{background:#f3e4f6}
 .cal .day.other{opacity:.35}
 
-.timer-big{font-size:44px;font-weight:800;font-variant-numeric:tabular-nums;letter-spacing:1px}
+.timer-wrap{display:flex;align-items:center;gap:24px;flex-wrap:wrap;margin-top:4px}
+.timer-ring{
+  width:168px;height:168px;border-radius:50%;flex:none;
+  background:conic-gradient(#C98FD3 0%,#eef2e9 0);
+  display:flex;align-items:center;justify-content:center;
+}
+.timer-ring .inner{
+  width:132px;height:132px;border-radius:50%;background:#fff;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  box-shadow:inset 0 2px 8px rgba(31,58,18,.06);
+}
+.timer-big{font-size:36px;font-weight:800;font-variant-numeric:tabular-nums;letter-spacing:1px}
 .fbar{height:12px;background:#eef2e9;border-radius:999px;overflow:hidden;margin-top:6px}
 .fbar > div{height:100%;background:linear-gradient(90deg,#B6D98C,#C98FD3);border-radius:999px;transition:width .3s}
 
@@ -172,26 +219,34 @@ details summary{font-weight:700;cursor:pointer}
 </head>
 <body>
 
+<aside id="sidebar">
+  <div class="sb-brand">кабинет даши</div>
+  <div class="sb-hi">дом для всех дел 🤍</div>
+  <nav id="nav"></nav>
+  <div class="sb-foot">
+    <div class="sb-points">🪙 <span class="js-points">0</span> баллов</div>
+    <div class="sb-catbar"><b class="js-catfill" style="width:0%"></b></div>
+    <div class="sb-catmsg js-catlabel">отметь первую задачу — котик пойдёт к клубку</div>
+  </div>
+</aside>
+
 <header class="hero">
   <div class="wrap">
-    <div class="row" style="justify-content:space-between">
-      <div class="grow">
-        <h1 id="greeting">Привет, Даша!</h1>
-        <div class="sub" id="dateLine"></div>
+    <h1 id="greeting">Привет, Даша!</h1>
+    <div class="day-phrase" id="dayPhrase"></div>
+    <div class="sub" id="dateLine"></div>
+    <div class="hero-meta">
+      <div class="points-pill">🪙 <span id="pointsNum" class="js-points">0</span> баллов</div>
+      <div class="cat-track">
+        <div class="pawline"></div>
+        <span class="cat" id="catEmoji" style="left:0%">🐈</span>
+        <span class="yarn">🧶</span>
       </div>
-      <div class="points-pill">🪙 <span id="pointsNum">0</span> баллов</div>
-    </div>
-    <div class="cat-track">
-      <div class="pawline"></div>
-      <span class="cat" id="catEmoji" style="left:0%">🐈</span>
-      <span class="yarn">🧶</span>
-      <span class="cat-label" id="catLabel">выполняй задачи — котик дойдёт до клубка</span>
     </div>
   </div>
 </header>
 
 <div class="wrap">
-  <nav id="nav"></nav>
 
   <main id="main">
 
@@ -238,8 +293,14 @@ details summary{font-weight:700;cursor:pointer}
         <button class="btn" id="timerBtn" onclick="timerToggle()">Старт</button>
         <button class="btn ghost mini" onclick="timerReset()">Сброс</button>
       </div>
-      <div class="timer-big" id="timerShow">25:00</div>
-      <div class="fbar"><div id="timerBar" style="width:0%"></div></div>
+      <div class="timer-wrap">
+        <div class="timer-ring" id="timerRing"><div class="inner"><div class="timer-big" id="timerShow">25:00</div></div></div>
+        <div class="grow" style="min-width:200px">
+          <div class="muted small">пока таймер идёт — можно закрыть вкладку, время не убежит до перезагрузки</div>
+          <div class="fbar"><div id="timerBar" style="width:0%"></div></div>
+          <div class="muted small mt" id="focusToday"></div>
+        </div>
+      </div>
       <div class="muted mt">⏱ Время в фокусе за неделю:</div>
       <div id="focusWeek"></div>
     </div>
@@ -596,7 +657,7 @@ function fmtRu(iso){var d=parseISO(iso);return d.getDate()+' '+MONTHS_RU[d.getMo
 function esc(s){return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
 function save(){localStorage.setItem(STORE_KEY,JSON.stringify(DB));}
 function toast(msg){var t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');clearTimeout(t._h);t._h=setTimeout(function(){t.classList.remove('show');},2200);}
-function addPoints(n){DB.points+=n;document.getElementById('pointsNum').textContent=DB.points;save();updateCat();}
+function addPoints(n){DB.points+=n;var pts=document.querySelectorAll('.js-points');for(var i=0;i<pts.length;i++)pts[i].textContent=DB.points;save();updateCat();}
 function dayObj(iso){
   if(!DB.days[iso])DB.days[iso]={energy:0,mood:0,main:'',plan:{m:[],d:[],e:[]},dayWord:'',good1:'',good2:'',good3:'',carryNote:'',closed:false};
   return DB.days[iso];
@@ -727,9 +788,16 @@ function renderHeader(){
   else if(h>=12&&h<17)g='Добрый день, Даша! 🌤';
   else if(h>=17&&h<23)g='Добрый вечер, Даша! 🌆';
   else g='Доброй ночи, Даша! 🌙';
+  var ph;
+  if(h>=5&&h<12)ph='a good day starts with a plan';
+  else if(h>=12&&h<17)ph='one thing at a time';
+  else if(h>=17&&h<23)ph='you did enough today';
+  else ph='rest is productive too';
   document.getElementById('greeting').textContent=g;
+  document.getElementById('dayPhrase').textContent=ph;
   document.getElementById('dateLine').textContent=fmtRu(todayStr());
-  document.getElementById('pointsNum').textContent=DB.points;
+  var pts=document.querySelectorAll('.js-points');
+  for(var i=0;i<pts.length;i++)pts[i].textContent=DB.points;
   updateCat();
 }
 function todayDoneTotal(){
@@ -741,7 +809,17 @@ function todayDoneTotal(){
 function updateCat(){
   var s=todayDoneTotal(),pct=s.total?Math.round(s.done/s.total*100):0;
   document.getElementById('catEmoji').style.left=(10+(pct*0.68))+'%';
-  document.getElementById('catLabel').textContent=s.done+' из '+s.total+' задач сегодня · '+DB.points+' баллов';
+  var msg;
+  if(!s.total)msg='добавь задачи на день — и котик проснётся';
+  else if(!s.done)msg='котик ещё спит... отметь первую задачу';
+  else if(pct>=100)msg=s.done+'/'+s.total+' · котик добрался до клубка!';
+  else msg=s.done+'/'+s.total+' · '+pct+'% · котик идёт к клубку';
+  var labs=document.querySelectorAll('.js-catlabel');
+  for(var i=0;i<labs.length;i++)labs[i].textContent=msg;
+  var fills=document.querySelectorAll('.js-catfill');
+  for(i=0;i<fills.length;i++)fills[i].style.width=pct+'%';
+  var p=document.getElementById('pointsNum');
+  if(!document.querySelector('.js-points'))document.getElementById('pointsNum').textContent=DB.points;
 }
 
 /* ================= ГЛАВНАЯ ================= */
@@ -834,6 +912,8 @@ function drawTimer(){
   var m=Math.floor(TIMER.left/60),s=TIMER.left%60;
   document.getElementById('timerShow').textContent=pad2(m)+':'+pad2(s);
   document.getElementById('timerBar').style.width=(100-TIMER.left/TIMER.total*100)+'%';
+  var pct=Math.round((1-TIMER.left/TIMER.total)*100);
+  document.getElementById('timerRing').style.background='conic-gradient(#C98FD3 '+pct+'%,#eef2e9 0deg)';
 }
 function timerReset(){
   stopTimer();
@@ -858,6 +938,10 @@ function beep(){
 document.addEventListener('change',function(e){if(e.target&&e.target.id==='focusLen')timerReset();});
 function renderFocusWeek(){
   var el=document.getElementById('focusWeek');
+  var todayFocus=DB.focus[todayStr()]||{},sum=0,k;
+  for(k in todayFocus)sum+=todayFocus[k];
+  var ft=document.getElementById('focusToday');
+  if(ft)ft.textContent='сегодня в фокусе: '+sum+' мин';
   var totals={},start=mondayOf(todayStr()),i,sec;
   for(i=0;i<7;i++){
     var per=DB.focus[addDaysISO(start,i)]||{};
